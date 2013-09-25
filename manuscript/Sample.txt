@@ -1,0 +1,55 @@
+frontmatter:
+
+  markdown/Prefaces/title.md
+
+  markdown/Prefaces/fogus.md
+
+  markdown/Sample/about.md
+
+  markdown/Prefaces/about.md
+
+mainmatter:
+
+    markdown/Sample/sample_chapter_title.md
+
+      markdown/Instances and Classes/simple.md
+
+      markdown/Instances and Classes/binding.md
+
+      markdown/Instances and Classes/revisiting-partial.md
+
+      markdown/Instances and Classes/class.md
+
+      markdown/Instances and Classes/object-methods.md
+
+      markdown/Instances and Classes/extends.md
+
+      markdown/Instances and Classes/summary.md
+
+      markdown/Sample/recipes_title.md
+
+        markdown/References and Rebinding/recipes/map-with.md
+
+        markdown/Objects, Mutation, and State/recipes/get-with.md
+
+        markdown/Objects, Mutation, and State/recipes/pluck.md
+
+        markdown/Instances and Classes/recipes/curry.md
+
+        markdown/Instances and Classes/recipes/bound.md
+
+        markdown/Instances and Classes/recipes/send.md
+
+        markdown/Instances and Classes/recipes/invoke.md
+
+        markdown/Instances and Classes/recipes/fluent.md
+
+backmatter:
+
+  markdown/Appendices/title.md
+
+    markdown/Sample/copyright.md
+
+    markdown/Appendices/image_copyrights.md
+
+    markdown/Appendices/reg.md

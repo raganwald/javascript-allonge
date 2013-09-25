@@ -1,0 +1,27 @@
+    markdown/Ideas/title.md
+
+      markdown/Ideas/prototype.md
+
+      markdown/Ideas/agnostic.md
+
+      markdown/Ideas/functional-mixins.md
+
+      markdown/Ideas/class-decorators.md
+      
+      markdown/Ideas/turtles.md
+      
+      markdown/Ideas/iterators.md
+
+      markdown/Ideas/recipes/title.md
+
+        markdown/Ideas/recipes/before.md
+
+        markdown/Ideas/recipes/after.md
+
+        markdown/Ideas/recipes/provided.md
+
+        markdown/Ideas/recipes/functional-mixin.md
+
+        markdown/Ideas/recipes/class-decorator.md
+
+        markdown/Ideas/recipes/iterator-recipes.md
