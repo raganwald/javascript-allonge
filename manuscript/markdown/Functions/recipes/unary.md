@@ -27,14 +27,14 @@ This doesn't work because `parseInt` is defined as `parseInt(string[, radix])`. 
 
 We could write `['1', '2', '3'].map(function (s) { return parseInt(s); })`, or we could come up with a decorator to do the job for us:
 
-  	function unary (fn) {
+    function unary (fn) {
       if (fn.length == 1) {
-  			return fn
-  		}
-  		else return function (something) {
-  			return fn.call(this, something)
-  		}
-  	}
+        return fn
+      }
+      else return function (something) {
+        return fn.call(this, something)
+      }
+    }
 
 And now we can write:
 
