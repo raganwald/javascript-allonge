@@ -42,7 +42,6 @@ Libraries like [Underscore] use a version of `tap` that is "uncurried:"
 Let's enhance our recipe so it works both ways:
 
     function tap (value, fn) {
-      
       if (fn === void 0) {
         return curried
       }
