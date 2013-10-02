@@ -16,7 +16,7 @@ And don’t just take my word for it, [here’s the entire book online](https://
 
 > I don't want to pay to download a PDF. Can I make my own?
 
-Yes, you can take the HTML that is available online or the moarkdown source in this repository and make your own PDF. Or any other format.
+Yes, you can take the HTML that is available online or the markdown source in this repository and make your own PDF. Or any other format.
 
 > I'd like to share it
 
