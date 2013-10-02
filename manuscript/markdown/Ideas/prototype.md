@@ -1,6 +1,6 @@
 ## How Prototypes and Constructors differ from Classes
 
-In the previous section, we said that JavaScript has "classes" for some definition of the word "class," and we showed how JavaScript provides many of the features found in other "object-oriented languages." For those who want a fuller explanation, this section goes into more detail about how JavaScript's "prototypes" differ from the classes found in a language like Ruby. It is not necessary to red this section to understand programming in JavaScript, but it can be helpful when discussing JavaScript with programmers who are more comfortable talking about classes.
+In the previous section, we said that JavaScript has "classes" for some definition of the word "class," and we showed how JavaScript provides many of the features found in other "object-oriented languages." For those who want a fuller explanation, this section goes into more detail about how JavaScript's "prototypes" differ from the classes found in a language like Ruby. It is not necessary to read this section to understand programming in JavaScript, but it can be helpful when discussing JavaScript with programmers who are more comfortable talking about classes.
 
 ---
 
