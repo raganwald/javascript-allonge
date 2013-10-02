@@ -99,7 +99,7 @@ tortoiseAndHareLoopDetector(list);
   //=> true
 ~~~~~~~~
 
-We have now refactored it into a function that operates on anything that responds to the `.iterate()` method. It's classic "Duck Typed" Object-Orientation. So, how shall we put it to work?
+We have now refactored it into a function that operates on anything that responds to the `.iterator()` method. It's classic "Duck Typed" Object-Orientation. So, how shall we put it to work?
 
 ## A Drunken Walk Across A Chequerboard
 
@@ -253,7 +253,7 @@ i();
   //=> '-3 3'
 ~~~~~~~~
 
-We're almost there! The refactored `tortoiseAndHareLoopDetector` expects an "iterable," an object that implements the  `.iterate()` method. Let's refactor `RelativeIterable` to accept a game and return an iterable instead of accepting an iteration and returning an iteration:
+We're almost there! The refactored `tortoiseAndHareLoopDetector` expects an "iterable," an object that implements the  `.iterator()` method. Let's refactor `RelativeIterable` to accept a game and return an iterable instead of accepting an iteration and returning an iteration:
 
 {:lang="javascript"}
 ~~~~~~~~
