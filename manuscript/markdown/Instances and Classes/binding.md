@@ -3,12 +3,12 @@
 Recall that in [What Context Applies When We Call a Function?](#context), we adjourned our look at setting the context of a function with a look at a `contextualize` helper function:
 
     var contextualize = function (fn, context) {
-          return function () {
-            return fn.apply(context, arguments)
-          }
-        },
-        a = [1,2,3],
-        accrete = contextualize(a.concat, a);
+      return function () {
+        return fn.apply(context, arguments)
+      }
+    },
+    a = [1,2,3],
+    accrete = contextualize(a.concat, a);
         
     accrete([4,5])
       //=> [ 1, 2, 3, 4, 5 ]
