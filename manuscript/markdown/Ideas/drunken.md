@@ -99,7 +99,7 @@ tortoiseAndHareLoopDetector(list);
   //=> true
 ~~~~~~~~
 
-We have now refactored it into a function operates on anything that responds to the `.iterate()` method. It's classic "Duck Typed" Object-Orientation. So, how shall we put it to work?
+We have now refactored it into a function that operates on anything that responds to the `.iterate()` method. It's classic "Duck Typed" Object-Orientation. So, how shall we put it to work?
 
 ## A Drunken Walk Across A Chequerboard
 

@@ -9,7 +9,7 @@ The most common use case is to fix a common problem. JavaScript has a `.map` met
       
 In that example, it looks exactly like the mapping function you'll find in most languages: You pass it a function, and it calls the function with one argument, the element of the array. However, that's not the whole story. JavaScript's `map` actually calls each function with *three* arguments: The element, the index of the element in the array, and the array itself.
 
-Lets try it:
+Let's try it:
 
     [1, 2, 3].map(function (element, index, arr) {
       console.log({element: element, index: index, arr: arr})
@@ -27,14 +27,14 @@ This doesn't work because `parseInt` is defined as `parseInt(string[, radix])`. 
 
 We could write `['1', '2', '3'].map(function (s) { return parseInt(s); })`, or we could come up with a decorator to do the job for us:
 
-  	function unary (fn) {
+    function unary (fn) {
       if (fn.length == 1) {
-  			return fn
-  		}
-  		else return function (something) {
-  			return fn.call(this, something)
-  		}
-  	}
+        return fn
+      }
+      else return function (something) {
+        return fn.call(this, something)
+      }
+    }
 
 And now we can write:
 

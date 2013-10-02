@@ -48,7 +48,7 @@ So here's a question: Are both ways of writing the code equivalent? Let's set up
       }
     })()
     
-What will this code do if we type it into a browser console? One theory is that it will alert `outer` and then `inner`, because when it evaluates the first alert, `questionable` hasn't been bound in the function's environment yet, so it will be looked up in the enclosing environment. Then an alias is bound, shadowing the outer binding,and it will alert `inner`.
+What will this code do if we type it into a browser console? One theory is that it will alert `outer` and then `inner`, because when it evaluates the first alert, `questionable` hasn't been bound in the function's environment yet, so it will be looked up in the enclosing environment. Then an alias is bound, shadowing the outer binding, and it will alert `inner`.
 
 This theory is wrong! It actually alerts `undefined` and then `inner`. Even though we wrote the `var` statement later in the code, JavaScript acts as if we'd declared it at the top of the function. This is true even if we never execute the `var` statement:
 

@@ -42,7 +42,6 @@ Libraries like [Underscore] use a version of `tap` that is "uncurried:"
 Let's enhance our recipe so it works both ways:
 
     function tap (value, fn) {
-      
       if (fn === void 0) {
         return curried
       }
@@ -76,6 +75,6 @@ Or:
 
     var drink = tap('espresso', null);
 
-`tap` can do more than just act as a debugging aid. it's also useful for working with [object and instance methods](#tap-methods).
+`tap` can do more than just act as a debugging aid. It's also useful for working with [object and instance methods](#tap-methods).
 
 [Underscore]: http://underscorejs.org
