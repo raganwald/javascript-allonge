@@ -4,7 +4,7 @@
 
 As we've seen, JavaScript functions take values as arguments and return values. JavaScript functions are values, so JavaScript functions can take functions as arguments, return functions, or both. Generally speaking, a function that either takes functions as arguments or returns a function (or both) is referred to as a "higher-order" function.
 
-Here'a very simple higher-order function that takes a function as an argument:
+Here's very simple higher-order function that takes a function as an argument:
 
     function repeat (num, fn) {
       var i, value;
