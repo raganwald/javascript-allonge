@@ -167,7 +167,7 @@ So we have *a function, that gives a function, that doesn't give anything*. Like
       }) 
     }
     
-That's a function, that gives a fuction, that gives `true`:
+That's a function, that gives a function, that gives `true`:
 
     (function () { 
       return (function () { 
