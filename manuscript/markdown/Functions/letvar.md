@@ -118,7 +118,7 @@ You can bind more than one name-value pair by separating them with commas. For r
       return "The diameter is " + calc(d)
     }
     
-These examples use the `var` keyword to bind names in the same environment as our function. We can also create a new scope using an IIFE if we wish to bind some name sin part of a function:
+These examples use the `var` keyword to bind names in the same environment as our function. We can also create a new scope using an IIFE if we wish to bind some names in part of a function:
 
     function foobar () {
 
