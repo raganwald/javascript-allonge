@@ -28,7 +28,7 @@ You can alias a function value:
     divisibleByTwo(42)
       //=> true
       
-What happens when we redefine a recursive function live `even`? Does `dividibleByTwo` still work? Let's try aliasing it and reassigning it:
+What happens when we redefine a recursive function like `even`? Does `dividibleByTwo` still work? Let's try aliasing it and reassigning it:
 
     even = void 0;
     
