@@ -1,4 +1,4 @@
-## Once
+## Once {#once}
 
 `once` is an extremely helpful combinator. It ensures that a function can only be called, well, *once*. Here's the recipe:
 
