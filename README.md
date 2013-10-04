@@ -14,7 +14,9 @@ And don’t just take my word for it, [here’s the entire book online](https://
 
 ### I don't want to pay to download a PDF. Can I make my own?
 
-Yes, you can take the HTML that is available online or the markdown source in this repository and make your own PDF. Or any other format. Please be aware that while it's technically possible to game the LeanPub system to produce the PDF or other formats, I ask you as a personal favour to find another way to make a PDF. The license permits this choice, but IMO it is contrary to the spirit of sharing and openness to use their resources and work to do something that isn't aligned with their mission.
+Yes, you can take the HTML that is available online or the markdown source in this repository and make your own PDF. Or any other format. Please be aware that while it's technically possible to game the LeanPub system to produce the PDF or other formats, I ask you as a personal favour to find another way to make a PDF.
+
+The license permits this choice, but IMO it is contrary to the spirit of sharing and openness to use their resources and work to do something that isn't aligned with their mission. And of course, they may not care for the idea, I don't know and I don't want to undermine what has been a tremendous service for helping people write great technical books.
 
 ### I'd like to share it.
 
