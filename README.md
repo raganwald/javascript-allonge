@@ -1,3 +1,5 @@
+# A personal letter from Reg Braithwaite
+
 Dear friends and readers:
 
 On October 1st, 2013, I announced that [JavaScript Allongé](https://leanpub.com/javascript-allonge) became free: It is now licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License][license]. You are free:

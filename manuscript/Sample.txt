@@ -48,6 +48,8 @@ backmatter:
 
   markdown/Appendices/title.md
 
+    markdown/Appendices/authornotes.md
+
     markdown/Sample/copyright.md
 
     markdown/Appendices/image_copyrights.md
