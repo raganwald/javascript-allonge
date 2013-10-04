@@ -67,7 +67,7 @@ We'll discuss mapWith again in [the recipes](#mapWith). The important thing to s
     safeSquareAll([1, null, 2, 3])
       //=> [1, null, 4, 9]
 
-We generalized composition with the `compose` combinator. Partial application also has a combinator, which we'll see in the [partial](#partial) recipe.
+We generalized composition with the `compose` combinator. Partial application also has a combinator, which we'll see in the [partial](#simple-partial) recipe.
 
 [^bind]: Modern JavaScript provides a limited form of partial application through the `Function.prototype.bind` method. This will be discussed in greater length when we look at function contexts.
 

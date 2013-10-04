@@ -75,6 +75,6 @@ Or:
 
     var drink = tap('espresso', null);
 
-`tap` can do more than just act as a debugging aid. It's also useful for working with [object and instance methods](#tap-methods).
+`tap` can do more than just act as a debugging aid. It's also useful for working with [object and instance methods](#object-methods).
 
 [Underscore]: http://underscorejs.org

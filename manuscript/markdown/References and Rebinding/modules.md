@@ -20,7 +20,7 @@ Because this function is invoked, if it contains a return statement, it evaluate
       return factorial(25)
     })();
 
-This could have been written using a named function to avoid the need for a let, but as we'll see in the [memoize](#recipe) later, sometimes there's good reason to write it like this. In any event, our let serves to create a scope for the `factorial` function. Presumably we write it this way to signal that we do not want to use it elsewhere, so putting it inside of a let keeps it invisible from the rest of the code.
+This could have been written using a named function to avoid the need for a let, but as we'll see in the [memoize](#memoize) later, sometimes there's good reason to write it like this. In any event, our let serves to create a scope for the `factorial` function. Presumably we write it this way to signal that we do not want to use it elsewhere, so putting it inside of a let keeps it invisible from the rest of the code.
 
 You'll note that once we've calculated the factorial of 25, we have no further need for the environment of the function, so it will   be thrown away. This is what we might call a **transient let**: Nothing we bind in the `let` is returned from the `let` or otherwise passed out though assignment, so the environment of the let is discarded when the let finishes being evaluated.
 
