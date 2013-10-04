@@ -127,7 +127,7 @@ The function `function (x, y) { return x + y }` is a pure function, because its 
           return function (w) {
             return x + y + z
           }
-        })
+        }
       }
     }
           
