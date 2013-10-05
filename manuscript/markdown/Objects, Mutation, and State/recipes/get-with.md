@@ -10,7 +10,7 @@ You can use it like this:
 
     var inventory = {
       apples: 0,
-      oranges 144,
+      oranges: 144,
       eggs: 36
     };
     
