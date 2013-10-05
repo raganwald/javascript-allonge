@@ -52,6 +52,12 @@ And I'd also like you to share it, in this form, in PDF, or anything else. Go wi
 
 [Yes, please do](http://braythwayt.com/2013/10/04/the-freedom-to-pay-thirty-bucks.html "The Freedom to Pay Thirty Bucks").
 
+### I don't want to buy it, but I'd like to say "thank you" with a tip.
+
+Sure thing, you can send a donation via PayPal to reg@braythwayt.com, or click this button to donate $10 to help me write:
+
+[![Donate $10](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PNL4TZ4S37R34)
+
 ### Hey, I have a great way to make money with this...
 
 Go for it, you are free to make commercial use of the work. For example, you could host it on your site and make money from ads, or write a JS tool and use the book as part of the help content.
