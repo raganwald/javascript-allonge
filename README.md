@@ -20,6 +20,16 @@ Yes, you can take the HTML that is available online or the markdown source in th
 
 The license permits this choice, but IMO it is contrary to the spirit of sharing and openness to use their resources and work to do something that isn't aligned with their mission. And of course, they may not care for the idea, I don't know and I don't want to undermine what has been a tremendous service for helping people write great technical books.
 
+### Great book! Can I still buy it?
+
+[Yes, please do](http://braythwayt.com/2013/10/04/the-freedom-to-pay-thirty-bucks.html "The Freedom to Pay Thirty Bucks").
+
+### I don't want to buy it, but I'd like to say "thank you" with a tip.
+
+Sure thing, you can send a donation via PayPal to reg@braythwayt.com, or click this button to donate $10 to help me write:
+
+[![Donate $10](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PNL4TZ4S37R34)
+
 ### I'd like to share it.
 
 And I'd also like you to share it, in this form, in PDF, or anything else. Go wild, just follow the attribution rules in the [license].

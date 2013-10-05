@@ -48,6 +48,10 @@ The license permits this choice, but IMO it is contrary to the spirit of sharing
 
 And I'd also like you to share it, in this form, in PDF, or anything else. Go wild, just follow the attribution rules in the [license].
 
+### Great book! Can I still buy it?
+
+[Yes, please do](http://braythwayt.com/2013/10/04/the-freedom-to-pay-thirty-bucks.html "The Freedom to Pay Thirty Bucks").
+
 ### Hey, I have a great way to make money with this...
 
 Go for it, you are free to make commercial use of the work. For example, you could host it on your site and make money from ads, or write a JS tool and use the book as part of the help content.
