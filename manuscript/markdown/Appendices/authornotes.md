@@ -40,7 +40,7 @@ So the recipes in JavaScript Allongé follow the JavaScript convention: Those na
 
 ### I don't want to pay to download a PDF. Can I make my own?
 
-Yes, you can take the HTML that is available online or the markdown source in this repository and make your own PDF. Or any other format. Please be aware that while it's technically possible to game the LeanPub system to produce the PDF or other formats, I ask you as a personal favour to find another way to make a PDF.
+Yes, you can take the HTML that is available online or the markdown source in [the repository][repo] and make your own PDF. Or any other format. Please be aware that while it's technically possible to game the LeanPub system to produce the PDF or other formats, I ask you as a personal favour to find another way to make a PDF.
 
 The license permits this choice, but IMO it is contrary to the spirit of sharing and openness to use their resources and work to do something that isn't aligned with their mission. And of course, they may not care for the idea, I don't know and I don't want to undermine what has been a tremendous service for helping people write great technical books.
 
@@ -70,8 +70,13 @@ I'd also love to see translations, editions with large print, or anything else t
 
 My email inbox is a disaster zone, so let's treat the book like open source. In order of my preference, you should:
 
-1. Create an [issue], fork the repo, fix the issue, and then send me a [pull request][pull]. (Best!!)
-2. Fork the repo, fix things to your satisfaction, and then send me a [pull request][pull]. (Better!)
+1. Create an [issue], fork [the repo][repo], fix the issue, and then send me a [pull request][pull]. (Best!!)
+2. Fork [the repo][repo], fix things to your satisfaction, and then send me a [pull request][pull]. (Better!)
 3. Create an [issue]. (Good.)
 
 Thanks!
+
+[license]: http://creativecommons.org/licenses/by-sa/3.0/deed.en_US "Creative Commons Attribution-ShareAlike 3.0 Unported License"
+[issue]: https://github.com/raganwald/javascript-allonge/issues
+[pull]: https://github.com/raganwald/javascript-allonge/pulls
+[repo]: https://github.com/raganwald/javascript-allonge/
