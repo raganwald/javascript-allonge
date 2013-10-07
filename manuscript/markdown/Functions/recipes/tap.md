@@ -67,7 +67,7 @@ Or:
       console.log("Our drink is", it) 
     });
     
-And if you wish it to do noting at all, You can write either:
+And if you wish it to do nothing at all, you can write either:
 
     var drink = tap('espresso')();
 
