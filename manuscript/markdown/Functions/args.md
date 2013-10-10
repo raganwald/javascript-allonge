@@ -105,10 +105,12 @@ What about reference types? JavaScript does not place copies of reference values
 
 Because many references can share the same value, and because JavaScript passes references as arguments, JavaScript can be said to implement "call by sharing" semantics. Call by sharing is generally understood to be a specialization of call by value, and it explains why some values are known as value types and other values are known as reference types.
 
-And with that, we're ready to look at *closures*. When we combine our knowledge of value types, reference types, arguments, and closures, we'll understand why this function always evaluates to `true` no matter what argument you apply it to:
+And with that, we're ready to look at *closures*. When we combine our knowledge of value types, reference types, arguments, and closures, we'll understand why this function always evaluates to `true` no matter what argument[^NaNPedantry] you apply it to:
 
     function (value) {
       return (function (copy) {
         return copy === value
       })(value)
     }
+
+[^NaNPedantry]: Unless the argument is NaN, which isn't equal to anything, including itself
