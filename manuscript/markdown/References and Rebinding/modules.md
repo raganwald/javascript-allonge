@@ -155,14 +155,14 @@ It looks like this:
       }
       
       // public methods
-      var drawLine = function (screen, leftPoint, rightPoint) { ... }
-      var drawRect = function (screen, topLeft, bottomRight) { ... }
-      var drawCircle = function (screen, center, radius) { ... }
+      function drawLine (screen, leftPoint, rightPoint) { ... }
+      function drawRect (screen, topLeft, bottomRight) { ... }
+      function drawCircle (screen, center, radius) { ... }
       
       // private helpers
       function bitBlt (screen, ...) { ... }
       function resize (screen, ...) { ... }
-      
+     
     })();
     
 You can then call the public functions using `DrawModule.drawCircle(...)`. The concept scales up to include the concept of state (such as setting default line styles), but when you look at it, it's really just the private closure let with a little more complexity in the form of returning an object with more than one function.
