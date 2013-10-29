@@ -24,8 +24,7 @@ Here's our recipe:
 
     function memoized (fn, keymaker) {
       var lookupTable = {}, 
-          key, 
-          value;
+          key;
         
       keymaker || (keymaker = function (args) {
         return JSON.stringify(args) 
