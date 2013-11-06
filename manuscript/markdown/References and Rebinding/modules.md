@@ -147,17 +147,17 @@ Consider a module designed to draw some bits on a virtual screen. The public API
 It looks like this:
 
     var DrawModule = (function () {
-      
-      return {
-        drawLine: drawLine,
-        drawRect: drawRect,
-        drawCircle: drawCircle
-      }
-      
+
       // public methods
       var drawLine = function (screen, leftPoint, rightPoint) { ... }
       var drawRect = function (screen, topLeft, bottomRight) { ... }
       var drawCircle = function (screen, center, radius) { ... }
+
+      return {
+        drawLine: drawLine,
+        drawRect: drawRect,
+        drawCircle: drawCircle
+      };
       
       // private helpers
       function bitBlt (screen, ...) { ... }
