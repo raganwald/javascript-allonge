@@ -20,7 +20,7 @@ JavaScript's `var` keyword is scoped to the function enclosing it. This makes se
       }
     }
     
-The name `blitz` is actually scoped to the function `foo`, not to the block of code in the consequent of an `if` statement. There are roughly two schools of thought. One line of reasoning goes like this: Since `bar` is scoped to the function `foo`, you should write the code like this:
+The name `blitz` is actually scoped to the function `foo`, not to the block of code in the consequent of an `if` statement. There are roughly two schools of thought. One line of reasoning goes like this: Since `blitz` is scoped to the function `foo`, you should write the code like this:
 
     function foo (bar) {
       var baz = bar * 2,
