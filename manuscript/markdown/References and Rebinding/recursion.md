@@ -120,14 +120,14 @@ Named function expressions have limits. Here's one such limit: You can do simple
 
 Using named function expressions doesn't help us, because `even` and `odd` need to be bound in an environment accessible to each other, not just to themselves. You either have to avoid rebinding the names of these functions, or use a closure to build a [module](#modules):
 
-    var operations = (function () {})(
+    var operations = (function () {
           var even = function (num) { return (num === 0) || odd( num - 1) };
           var odd  = function (num) { return (num  >  0) && even(num - 1) };
           return {
             even: even,
             odd:  odd
           }
-        ),
+        })(),
         even = operations.even,
         odd = operations.odd;
         
