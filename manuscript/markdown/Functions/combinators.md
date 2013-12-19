@@ -54,25 +54,25 @@ Let's say we have:
       return number + 1
     }
     
-    function double (number) {
+    function doubleOf (number) {
       return number * 2
     }
 
 With `compose`, anywhere you would write
 
     function doubleOfAddOne (number) {
-      return double(addOne(number))
+      return doubleOf(addOne(number))
     }
     
 You could also write:
 
-    var doubleOfAddOne = compose(double, addOne);
+    var doubleOfAddOne = compose(doubleOf, addOne);
     
 This is, of course, just one example of many. You'll find lots more perusing the recipes in this book. While some programmers believe "There Should Only Be One Way To Do It," having combinators available as well as explicitly writing things out with lots of symbols and keywords has some advantages when used judiciously.
 
 ### a balanced statement about combinators
 
-Code that uses a lot of combinators tends to name the verbs and adverbs (like `double`, `addOne`, and `compose`) while avoiding language keywords and the names of nouns (like `number`). So one perspective is that combinators are useful when you want to emphasize what you're doing and how it fits together, and more explicit code is useful when you want to emphasize what you're working with.
+Code that uses a lot of combinators tends to name the verbs and adverbs (like `doubleOf`, `addOne`, and `compose`) while avoiding language keywords and the names of nouns (like `number`). So one perspective is that combinators are useful when you want to emphasize what you're doing and how it fits together, and more explicit code is useful when you want to emphasize what you're working with.
 
 ### function decorators {#decorators}
 
