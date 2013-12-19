@@ -47,7 +47,7 @@ Why is this called `getWith`? Consider this function that is common in languages
       return object[attr];
     };
     
-You might ask, "Why use a function instead of just using `[]`?" The answer is, we can manipulate functions in ways that we can't manipulate syntax. For example, do you remember from [filp](#flip) that we can define `mapWith` from `map`?
+You might ask, "Why use a function instead of just using `[]`?" The answer is, we can manipulate functions in ways that we can't manipulate syntax. For example, do you remember from [flip](#flip) that we can define `mapWith` from `map`?
 
     var mapWith = flip(map);
     
