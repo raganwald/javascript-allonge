@@ -40,7 +40,7 @@ In David Herman's [Effective JavaScript][ejs], he describes the "New-Agnostic Co
       this.password = password
     };
 
-Now you can call the constructor without the `new` password:
+Now you can call the constructor without the `new` keyword:
 
     User('James', 'swordfish')
       //=> { name: 'James', password: 'swordfish' }
