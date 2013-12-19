@@ -95,7 +95,7 @@ Notice that we mix the functionality into the prototype. This keeps our mixing f
 This approach has some subtle benefits: You can use mixins as methods, for example. It's possible to write a context-agnostic functional mixin:
 
     function colourCoded () {
-      if (arguments.length[0] !== void 0) {
+      if (arguments[0] !== void 0) {
         return colourCoded.call(arguments[0]);
       }
       this.setColourRGB = fluent( function (r, g, b) {
