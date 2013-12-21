@@ -14,7 +14,7 @@ Consider that age-old interview quiz, writing a recursive fibonacci function (th
 We'll time it:
 
     s = (new Date()).getTime()
-    new Fibonacci(45).toInt()
+    fibonacci(45)
     ( (new Date()).getTime() - s ) / 1000
       //=> 28.565
       
