@@ -90,7 +90,7 @@ Here's a function that curries any function with two arguments:
     
     function add2 (a, b) { return a + b }
     
-    curryTwo(add)(5)(6)
+    curryTwo(add2)(5)(6)
       //=> 11
 
 And from there we can curry a function with three arguments:
