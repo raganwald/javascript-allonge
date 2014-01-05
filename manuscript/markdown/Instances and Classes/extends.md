@@ -11,14 +11,14 @@ Here's our `Queue`:
         tail: -1
       })
     };
-      
+
     extend(Queue.prototype, {
       pushTail: function (value) {
         return this.array[this.tail += 1] = value
       },
       pullHead: function () {
         var value;
-        
+
         if (!this.isEmpty()) {
           value = this.array[this.head]
           this.array[this.head] = void 0;
@@ -28,7 +28,7 @@ Here's our `Queue`:
       },
       isEmpty: function () {
         return this.tail < this.head
-      }      
+      }
     });
 
 And here's what our `Deque` would look like before we wire things together:
@@ -36,16 +36,16 @@ And here's what our `Deque` would look like before we wire things together:
     var Dequeue = function () {
       Queue.prototype.constructor.call(this)
     };
-    
+
     Dequeue.INCREMENT = 4;
-      
+
     extend(Dequeue.prototype, {
       size: function () {
         return this.tail - this.head + 1
       },
       pullTail: function () {
         var value;
-        
+
         if (!this.isEmpty()) {
           value = this.array[this.tail];
           this.array[this.tail] = void 0;
@@ -55,7 +55,7 @@ And here's what our `Deque` would look like before we wire things together:
       },
       pushHead: function (value) {
         var i;
-        
+
         if (this.head === 0) {
           for (i = this.tail; i >= this.head; --i) {
             this.array[i + INCREMENT] = this.array[i]
@@ -78,26 +78,26 @@ Yes they can. Imagine that `Deque.prototype` was a proxy for an instance of `Que
 Here's such a proxy:
 
     var QueueProxy = function () {}
-    
+
     QueueProxy.prototype = Queue.prototype
-    
+
 Our `QueueProxy` isn't actually a `Queue`, but its `prototype` is an alias of `Queue.prototype`. Thus, it can pick up `Queue`'s behaviour. We want to use it for our `Deque`'s prototype. Let's insert that code in our class definition:
 
     var Dequeue = function () {
       Queue.prototype.constructor.call(this)
     };
-    
+
     Dequeue.INCREMENT = 4;
-    
+
     Dequeue.prototype = new QueueProxy();
-      
+
     extend(Dequeue.prototype, {
       size: function () {
         return this.tail - this.head + 1
       },
       pullTail: function () {
         var value;
-        
+
         if (!this.isEmpty()) {
           value = this.array[this.tail];
           this.array[this.tail] = void 0;
@@ -107,7 +107,7 @@ Our `QueueProxy` isn't actually a `Queue`, but its `prototype` is an alias of `Q
       },
       pushHead: function (value) {
         var i;
-        
+
         if (this.head === 0) {
           for (i = this.tail; i >= this.head; --i) {
             this.array[i + INCREMENT] = this.array[i]
@@ -118,7 +118,7 @@ Our `QueueProxy` isn't actually a `Queue`, but its `prototype` is an alias of `Q
         this.array[this.head -= 1] = value
       }
     });
-      
+
 And it seems to work:
 
     d = new Dequeue()
@@ -131,23 +131,23 @@ And it seems to work:
       //=> '!'
     d.pullHead()
       //=> 'JavaScript'
-      
+
 Wonderful!
-      
+
 ### getting the constructor element right
 
 How about some of the other things we've come to expect from instances?
 
     d.constructor == Dequeue
       //=> false
-      
+
 Oops! Messing around with Dequeue's prototype broke this important equivalence. Luckily for us, the `constructor` property is mutable for objects we create. So, let's make a small change to `QueueProxy`:
 
     var QueueProxy = function () {
       this.constructor = Dequeue;
     }
     QueueProxy.prototype = Queue.prototype
-    
+
 Repeat. Now it works:
 
     d.constructor === Dequeue
@@ -173,16 +173,16 @@ And use it in `Dequeue`:
     var Dequeue = child(Queue, function () {
       Queue.prototype.constructor.call(this)
     });
-    
+
     Dequeue.INCREMENT = 4;
-      
+
     extend(Dequeue.prototype, {
       size: function () {
         return this.tail - this.head + 1
       },
       pullTail: function () {
         var value;
-        
+
         if (!this.isEmpty()) {
           value = this.array[this.tail];
           this.array[this.tail] = void 0;
@@ -192,7 +192,7 @@ And use it in `Dequeue`:
       },
       pushHead: function (value) {
         var i;
-        
+
         if (this.head === 0) {
           for (i = this.tail; i >= this.head; --i) {
             this.array[i + INCREMENT] = this.array[i]
@@ -210,4 +210,4 @@ Some folks just **love** to build their own mechanisms. When all goes well, they
 
 If you're keen on learning, you can work on improving the above code to handle extending constructor properties, automatically calling the parent constructor function, and so forth. Or you can decide that doing it by hand isn't that hard so why bother putting a thin wrapper around it?
 
-It's up to you, while JavaScript isn't the tersest language, it isn't so baroque that building inheritence ontologies requires hundreds of lines of inscrutable code.
+It's up to you, while JavaScript isn't the tersest language, it isn't so baroque that building inheritance ontologies requires hundreds of lines of inscrutable code.
