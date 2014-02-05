@@ -107,8 +107,8 @@ So, when we want to make a recursive function, the safest practice is to use a n
 
 Named function expressions have limits. Here's one such limit: You can do simple recursion, but not mutual recursion. For example:
 
-    var even = function (num) even { return (num === 0) || odd( num - 1) };
-    var odd  = function (num) odd  { return (num  >  0) && even(num - 1) };
+    var even = function even(num) { return (num === 0) || odd( num - 1) };
+    var odd  = function  odd(num) { return (num  >  0) && even(num - 1) };
     
     odd = 'unusual';
 
