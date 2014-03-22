@@ -42,13 +42,15 @@ It's all good, just follow the [license terms][license]. It is technically possi
 
 I'd also love to see translations, editions with large print, or anything else that brings something new to the world. Many people have asked for a hard-copy version. Who will be the first to set up shop on lulu.com?
 
-### I found a typo! Can I email you about it?
+### I found a typo/error! Can I email you about it?
 
 Thanks, but my email inbox is a disaster zone. Let's treat the book like OSS. In order of my preference, you should:
 
 1. Create an [issue], fork the repo, fix the issue, and then send me a [pull request][pull]. (Best!!)
 2. Fork the repo, fix things to your satisfaction, and then send me a [pull request][pull]. (Better!)
 3. Create an [issue]. (Good.)
+
+If you have emailed me and I haven't replied, I've probably declared email bankruptcy and lost your email. Sorry, please create an [issue].
 
 Thanks!
 
