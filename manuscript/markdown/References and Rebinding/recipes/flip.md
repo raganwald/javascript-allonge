@@ -30,8 +30,8 @@ Second, we're "currying" the function so that instead of defining a function tha
       return function (fn) {
         return map(list, fn);
       };
-    };  
-      
+    };
+
 Let's return to the implementation that does both:
 
     function mapWith (fn) {
@@ -39,7 +39,7 @@ Let's return to the implementation that does both:
         return map.call(list, fn);
       };
     };
-    
+
 Now let's put a wrapper around it:
 
     function wrapper () {
@@ -49,7 +49,7 @@ Now let's put a wrapper around it:
         };
       };
     };
-    
+
 Abstract the parameter names:
 
     function wrapper () {
@@ -59,7 +59,7 @@ Abstract the parameter names:
         };
       };
     };
-    
+
 And finally, extract the function as a parameter:
 
     function wrapper (fn) {
@@ -69,13 +69,13 @@ And finally, extract the function as a parameter:
         };
       };
     };
-    
+
 What we have now is a function that takes a function and "flips" the order of arguments around, then curries it:
 
     function flip (fn) {
       return function (first) {
         return function (second) {
-          return fn.call(second, first);
+          return fn.call(this, second, first);
         };
       };
     };
@@ -83,7 +83,7 @@ What we have now is a function that takes a function and "flips" the order of ar
 This is gold. Consider how we define [mapWith](#mapWith) now:
 
     var mapWith = flip(map);
-    
+
 Much nicer!
 
 There's one final decoration. Sometimes we'll want to flip a function but retain the flexibility to call it with both parameters at once. No problem:
@@ -91,11 +91,11 @@ There's one final decoration. Sometimes we'll want to flip a function but retain
     function flip (fn) {
       return function (first, second) {
         if (arguments.length === 2) {
-          return fn.call(second, first); 
+          return fn.call(this, second, first);
         }
         else {
           return function (second) {
-            return fn.call(second, first);
+            return fn.call(this, second, first);
           };
         };
       };
