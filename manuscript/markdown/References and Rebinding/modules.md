@@ -155,9 +155,9 @@ It looks like this:
       }
       
       // public methods
-      var drawLine = function (screen, leftPoint, rightPoint) { ... }
-      var drawRect = function (screen, topLeft, bottomRight) { ... }
-      var drawCircle = function (screen, center, radius) { ... }
+      function drawLine(screen, leftPoint, rightPoint) { ... }
+      function drawRect(screen, topLeft, bottomRight) { ... }
+      function drawCircle(screen, center, radius) { ... }
       
       // private helpers
       function bitBlt (screen, ...) { ... }
