@@ -53,7 +53,7 @@ All containers can contain any value, including functions or other containers:
     Mathematics.abs(-5)
       //=> 5
 
-Funny we should mention `Mathematics`. If you recall, JavaScript provides a global environment that contains some existing object that have handy functions you can use. One of them is called `Math`, and it contains functions for `abs`, `max`, `min`, and many others. Since it is always available, you can use it in any environment provided you don't shadow `Math`.
+Funny we should mention `Mathematics`. If you recall, JavaScript provides a global environment that contains some existing objects that have handy functions you can use. One of them is called `Math`, and it contains functions for `abs`, `max`, `min`, and many others. Since it is always available, you can use it in any environment provided you don't shadow `Math`.
 
     Math.abs(-5)
       //=> 5
