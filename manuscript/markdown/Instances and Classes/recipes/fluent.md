@@ -23,7 +23,7 @@ Object and instance methods can be bifurcated into two classes: Those that query
 
 Having methods like `setFlavour` return the value being set mimics the behaviour of assignment, where `cake.flavour = 'chocolate'` is an expression that in addition to setting a property also evaluates to the value `'chocolate'`.
 
-The [fluent] style presumes that most of the time when you perform an update you are more interested in doing other things with the receiver then the values being passed as argument(s), so the rule is to return the receiver unless the method is a query:
+The [fluent] style presumes that most of the time when you perform an update you are more interested in doing other things with the receiver than the values being passed as argument(s), so the rule is to return the receiver unless the method is a query:
 
     function Cake () {}
     
