@@ -63,7 +63,7 @@ Pure functions are easiest to understand. They always mean the same thing wherev
       }
     }
 
-The first function doesn't have any variables, therefore doesn't have any free variables. The second doesn't have any free variables, because its only variable is bound. The third one is actually two functions, one in side the other. `function (y) ...` has a free variable, but the entire expression refers to `function (x) ...`, and it doesn't have a free variable: The only variable anywhere in its body is `x`, which is certainly bound within `function (x) ...`.
+The first function doesn't have any variables, therefore doesn't have any free variables. The second doesn't have any free variables, because its only variable is bound. The third one is actually two functions, one inside the other. `function (y) ...` has a free variable, but the entire expression refers to `function (x) ...`, and it doesn't have a free variable: The only variable anywhere in its body is `x`, which is certainly bound within `function (x) ...`.
 
 From this, we learn something: A pure function can contain a closure.
 
