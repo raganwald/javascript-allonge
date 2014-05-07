@@ -88,7 +88,7 @@ Consider a [queue]:
         pullHead: function () {
           var value;
           
-          if tail >= head {
+          if (tail >= head) {
             value = array[head];
             array[head] = void 0;
             head += 1;
