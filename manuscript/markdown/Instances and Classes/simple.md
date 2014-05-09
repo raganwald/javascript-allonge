@@ -92,7 +92,7 @@ Very interesting! We will take another look at the `constructor` element when we
 
 ### revisiting `this` idea of queues
 
-Let's rewrite our Queue to use `new` and `.prototype`, using `this` and our `extends` helper from [Composition and Extension](#composition):
+Let's rewrite our Queue to use `new` and `.prototype`, using `this` and our `extend` helper from [Composition and Extension](#composition):
 
     var Queue = function () {
       extend(this, {
