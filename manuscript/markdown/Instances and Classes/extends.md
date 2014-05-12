@@ -58,7 +58,7 @@ And here's what our `Deque` would look like before we wire things together:
 
         if (this.head === 0) {
           for (i = this.tail; i >= this.head; --i) {
-            this.array[i + INCREMENT] = this.array[i]
+            this.array[i + this.constructor.INCREMENT] = this.array[i]
           }
           this.tail += this.constructor.INCREMENT;
           this.head += this.constructor.INCREMENT
@@ -110,7 +110,7 @@ Our `QueueProxy` isn't actually a `Queue`, but its `prototype` is an alias of `Q
 
         if (this.head === 0) {
           for (i = this.tail; i >= this.head; --i) {
-            this.array[i + INCREMENT] = this.array[i]
+            this.array[i + this.constructor.INCREMENT] = this.array[i]
           }
           this.tail += this.constructor.INCREMENT;
           this.head += this.constructor.INCREMENT
@@ -195,7 +195,7 @@ And use it in `Dequeue`:
 
         if (this.head === 0) {
           for (i = this.tail; i >= this.head; --i) {
-            this.array[i + INCREMENT] = this.array[i]
+            this.array[i + this.constructor.INCREMENT] = this.array[i]
           }
           this.tail += this.constructor.INCREMENT;
           this.head += this.constructor.INCREMENT
