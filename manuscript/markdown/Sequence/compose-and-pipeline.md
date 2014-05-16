@@ -52,7 +52,7 @@ This makes it clear that `setter` adds the behaviour of both `fluent` and `maybe
       return fluent(maybe(fn));
     }
 
-The take-away is that `compose` is helpful when we are defining a new function that combines the effects existing functions.
+The take-away is that `compose` is helpful when we are defining a new function that combines the effects of existing functions.
 
 ### pipeline
 
