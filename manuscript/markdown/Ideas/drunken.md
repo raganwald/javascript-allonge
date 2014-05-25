@@ -217,7 +217,7 @@ function statefulMap (iter, binaryFn, initial) {
 };
 ~~~~~~~~
 
-`statefulMap` takes in iterator and maps it to a new iterator. Unlike a "regular" map, it is computes its elements on demand, so it will not run indefinitely when given an iteration representing an infinitely looping chequer. We need a stateful map because we are tracking a position that changes over time even when given the same direction over and over again.
+`statefulMap` takes in iterator and maps it to a new iterator. Unlike a "regular" map, it computes its elements on demand, so it will not run indefinitely when given an iteration representing an infinitely looping chequer. We need a stateful map because we are tracking a position that changes over time even when given the same direction over and over again.
 
 Here's how we use `statefulMap`:
 
