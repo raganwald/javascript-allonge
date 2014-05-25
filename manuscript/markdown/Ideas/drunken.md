@@ -405,4 +405,4 @@ terminates(new Game(4));
   //=> true
 ~~~~~~~~
 
-Refactoring an algorithm to work with iterators allows us to use the same algorithm to solve different problems and to swap algorithms for the same problem. This is natural, we have created an abstraction that allows us to plug different items into either side of of its interface.
+Refactoring an algorithm to work with iterators allows us to use the same algorithm to solve different problems and to swap algorithms for the same problem. This is natural, we have created an abstraction that allows us to plug different items into either side of its interface.
