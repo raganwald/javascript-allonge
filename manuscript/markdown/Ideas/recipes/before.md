@@ -98,7 +98,6 @@ And here we are using it in conjunction with `fluent`, showing the power of comp
       })),
       bake: fluent( mixFirst( function () {
         // do some baking
-        return this
       }))
     });
 
