@@ -22,7 +22,7 @@ Libraries like [Underscore] provide `pluck`, the flipped version of `pluckWith`:
 
 Our recipe is terser when you want to name a function:
 
-    var eggsByStore = pluck('eggs');
+    var eggsByStore = pluckWith('eggs');
     
 vs.
 
