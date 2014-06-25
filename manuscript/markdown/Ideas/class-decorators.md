@@ -6,7 +6,7 @@
 the function decorator pattern being discussed here only works with constructors that are [new agnostic](#new-agnostic)[^create] and that can
 create an "empty object."
 
-[^create]: Another approach that works with ECMASCRipt 5 and later is to base all classes around [Object.create](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/create)
+[^create]: Another approach that works with ECMAScript 5 and later is to base all classes around [Object.create](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/create)
 
 Once again, our Todo class:
 
