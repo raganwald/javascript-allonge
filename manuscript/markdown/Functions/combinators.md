@@ -84,13 +84,13 @@ A *function decorator* is a higher-order function that takes one function as an 
       }
     }
 
-So instead of writing `!someFunction(42)`, you can write `not(someFunction)(42)`. Hardly progress. But like `compose`, you could write either
+So instead of writing `!someFunction(42)`, you can write `not(someFunction)(42)`. Hardly progress. But like for `compose`, if you have:
 
     function something (x) {
       return x != null
     }
 
-And elsewhere, he writes:
+Then you could write either:
 
     function nothing (x) {
       return !something(x)
