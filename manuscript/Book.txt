@@ -184,7 +184,7 @@ backmatter:
 
     markdown/Appendices/thanks.md
 
-    markdown/Appendices/coffeescript-ristretto.md
+    markdown/Appendices/spessore.md
 
     markdown/Appendices/copyright.md
 
