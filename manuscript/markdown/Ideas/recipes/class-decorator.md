@@ -8,6 +8,7 @@ As [discussed](#class-decorators), a class decorator creates a new class with so
                  : new Todo();
       self.name = name || 'Untitled';
       self.done = false;
+      return self;
     };
     
     Todo.prototype.do = fluent( function () {
