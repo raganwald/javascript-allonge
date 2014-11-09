@@ -12,6 +12,7 @@ Here's an evolved class of todo items we saw earlier:
                  : new Todo();
       self.name = name || 'Untitled';
       self.done = false;
+      return self;
     };
     
     Todo.prototype.do = fluent( function () {
