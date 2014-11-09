@@ -57,7 +57,7 @@ Nothing wrong with that, however it does clutter the core functionality of risin
     },
     rise: fluent (function (duration) {
       this.mix();
-      this.reallyRise()
+      this.reallyRise(duration)
     }),
     reallyBake: function () {
       // do some baking
