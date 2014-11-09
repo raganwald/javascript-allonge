@@ -77,7 +77,7 @@ The named once adds a property, `__once__`, to the context where the function is
     
     var w = new Widget()
       .setVolume(...)
-      .setDensity)(...)
+      .setDensity(...)
       .setLength(...)
       .initialize();
       
