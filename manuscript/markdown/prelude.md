@@ -88,7 +88,7 @@ Note well what is happening with these examples: Even when we obtain a string, n
 
 We haven't encountered the fourth possibility yet. Stretching the metaphor somewhat, some types of cups have a serial number on the bottom. So even if you have two cups of the same type, and their contents are the same, you can still distinguish between them.
 
-![Cafe Macchiato is also a fine drink, especially when following up on the fortunes of the Azzuri or the standings in the Giro D'Italia](images/macchiato_1200.jpg)
+![Cafe Macchiato is also a fine drink, especially when following up on the fortunes of the Azzurri or the standings in the Giro D'Italia](images/macchiato_1200.jpg)
 
 ### reference types
 
