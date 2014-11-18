@@ -56,7 +56,7 @@ Of course, these are unbound methods we're "getting" from each object. Here's a 
 
     var bound = variadic( function (messageName, args) {
       
-      if (args === []) {
+      if (args.length === 0) {
         return function (instance) {
           return instance[messageName].bind(instance)
         }
