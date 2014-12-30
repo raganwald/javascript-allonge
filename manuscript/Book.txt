@@ -12,6 +12,8 @@ frontmatter:
 
   markdown/Prefaces/legend.md
 
+  markdown/Prefaces/spessore-prelude.md
+
   markdown/prelude.md
 
 mainmatter:
