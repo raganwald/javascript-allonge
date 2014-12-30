@@ -12,7 +12,7 @@ frontmatter:
 
   markdown/Prefaces/legend.md
 
-  markdown/Prefaces/spessore-prelude.md
+  markdown/Prefaces/spessore.md
 
   markdown/prelude.md
 
