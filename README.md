@@ -8,7 +8,7 @@ On October 1st, 2013, I announced that [JavaScript Allongé](https://leanpub.com
 * to Remix—to adapt the work
 * to make commercial use of the work
 
-Read the [license](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US) yourself for the full details. But the bottom line is, it’s free, *free*, **FREE**!
+Read the [license](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US) yourself. The bottom line is, it’s free, *free*, **FREE**!
 
 And don’t just take my word for it, [here’s the entire book online](https://leanpub.com/javascript-allonge/read).
 
