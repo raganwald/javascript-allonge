@@ -2,28 +2,34 @@
 
 This is the [canonical Y Combinator][y]:
 
-    function Y (f) {
-      return ((function (x) {
-        return f(function (v) {
-          return x(x)(v);
-        });
-      })(function (x) {
-        return f(function (v) {
-          return x(x)(v);
-        });
-      }));
-    }
+{:lang="js"}
+~~~~~~~~
+function Y (f) {
+  return ((function (x) {
+    return f(function (v) {
+      return x(x)(v);
+    });
+  })(function (x) {
+    return f(function (v) {
+      return x(x)(v);
+    });
+  }));
+}
+~~~~~~~~
 
 You use it like this:
 
-    var factorial = Y(function (fac) {
-      return function (n) {
-        return (n == 0 ? 1 : n * fac(n - 1));
-      }
-    });
- 
-    factorial(5)
-      //=> 120
+{:lang="js"}
+~~~~~~~~
+var factorial = Y(function (fac) {
+  return function (n) {
+    return (n == 0 ? 1 : n * fac(n - 1));
+  }
+});
+
+factorial(5)
+  //=> 120
+~~~~~~~~
 
 Why? It enables you to make recursive functions without needing to bind a function to a name in an environment. This has little practical utility in JavaScript, but in combinatory logic it's essential: With fixed-point combinators it's possible to compute everything computable without binding names.
 
@@ -33,31 +39,37 @@ There are many explanations of the Y Combinator's mechanism on the internet, but
 
 Work things out for yourself. And once you've grokked that recipe, this recipe is for a Y Combinator that is a little more idiomatic. Work it out too:
 
-    function Y (fn) {
-      var f = function (f) {
-        return function () {
-          return fn.apply(f, arguments)
-        }
-      };
-      
-      return ((function (x) {
-        return f(function (v) {
-          return x(x)(v);
-        });
-      })(function (x) {
-        return f(function (v) {
-          return x(x)(v);
-        });
-      }));
+{:lang="js"}
+~~~~~~~~
+function Y (fn) {
+  var f = function (f) {
+    return function () {
+      return fn.apply(f, arguments)
     }
+  };
+
+  return ((function (x) {
+    return f(function (v) {
+      return x(x)(v);
+    });
+  })(function (x) {
+    return f(function (v) {
+      return x(x)(v);
+    });
+  }));
+}
+~~~~~~~~
 
 You use this version like this:
 
-    var factorial = Y(function (n) {
-      return (n == 0 ? 1 : n * this(n - 1));
-    });
- 
-    factorial(5)
+{:lang="js"}
+~~~~~~~~
+var factorial = Y(function (n) {
+  return (n == 0 ? 1 : n * this(n - 1));
+});
+
+factorial(5)
+~~~~~~~~
 
 There are certain cases involving nested recursive functions it cannot handle due to the ambiguity of `this`, and obviously it is useless as a method combination, but it is an interesting alternative to the `let` pattern.
 

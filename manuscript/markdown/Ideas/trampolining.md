@@ -15,6 +15,7 @@ Let's begin with a use case.
 
 Consider implementing `factorial` in recursive style:
 
+{:lang="js"}
 ~~~~~~~~
 function factorial (n) {
   return n
@@ -29,6 +30,7 @@ This creates two problems: First, we need space O*n* for all those stack frames.
 
 For example:
 
+{:lang="js"}
 ~~~~~~~~
 factorial(10)
   //=> 3628800
@@ -50,6 +52,7 @@ What we need to do is take the expression `n * factorial(n - 1)` and push it dow
 
 If we use the symbol `_` to represent a kind of "hole" in an expression where we plan to put the result, every time `factorial` calls itself, it needs to remember `n * _` so that when it gets a result back, it can multiply it by `n` and return that. So the first time it calls itself, it remembers `10 * _`, the second time it calls itself, it remembers `9 * _`, and all these things stack up like this when we call `factorial(10)`:
 
+{:lang="js"}
 ~~~~~~~~
  1 * _
  2 * _
@@ -67,10 +70,11 @@ Finally, we call `factorial(0)` and it returns `1`. Then the top is popped off t
 
 How can we get around this? Well, imagine if we don't have a hole in a computation to return. In that case, we wouldn't need to "remember" anything on the stack. To make this happen, we need to either return a value or return the result of calling another function without any further computation.
 
-Such a call is said to be in "tail position" and to be a "tail call." The "elimination" of tail-call elimination means that we don't perform a full call including setting up a new stack frame. We perform the equivalent of a "jump." 
+Such a call is said to be in "tail position" and to be a "tail call." The "elimination" of tail-call elimination means that we don't perform a full call including setting up a new stack frame. We perform the equivalent of a "jump."
 
 For example:
 
+{:lang="js"}
 ~~~~~~~~
 function factorial (n) {
   var _factorial = function myself (acc, n) {
@@ -78,13 +82,14 @@ function factorial (n) {
     ? myself(acc * n, n - 1)
     : acc
   };
-  
+
   return _factorial(1, n);
 }
 ~~~~~~~~
 
 Now our function either returns a value or it returns the result of calling another function without doing anything with that result. This gives us the correct results, but we can see that current implementations of JavaScript don't perform this magic "tail-call elimination."
 
+{:lang="js"}
 ~~~~~~~~
 factorial(10)
   //=> 3628800
@@ -102,10 +107,11 @@ When we call a function, it returns a *thunk* that we call to get a result. Of c
 
 A *thunk* is a function taking no arguments that delays evaluating an expression. For example, this is a thunk: `function () { return 'Hello World'; }`.
 
-An extremely simple and useful implementation of trampolining can be found in the [Lemonad] library. It works provided that you want to trampoline a function that doesn't return a function. Here it is: 
+An extremely simple and useful implementation of trampolining can be found in the [Lemonad] library. It works provided that you want to trampoline a function that doesn't return a function. Here it is:
 
 [Lemonad]: http://fogus.github.com/lemonad/
 
+{:lang="js"}
 ~~~~~~~~
 L.trampoline = function(fun /*, args */) {
   var result = fun.apply(fun, _.rest(arguments));
@@ -120,6 +126,7 @@ L.trampoline = function(fun /*, args */) {
 
 We'll rewrite it in combinatorial style for consistency and composeability:
 
+{:lang="js"}
 ~~~~~~~~
 
 var trampoline = function (fn) {
@@ -137,6 +144,7 @@ var trampoline = function (fn) {
 
 Now here's our implementation of `factorial` that is wrapped around a trampolined tail recursive function:
 
+{:lang="js"}
 ~~~~~~~~
 function factorial (n) {
   var _factorial = trampoline( function myself (acc, n) {
@@ -144,7 +152,7 @@ function factorial (n) {
     ? function () { return myself(acc * n, n - 1); }
     : acc
   });
-  
+
   return _factorial(1, n);
 }
 
@@ -158,6 +166,7 @@ Presto, it runs for `n = 32768`. Sadly, JavaScript's built-in support for intege
 
 [^big]: The use of a third-party big integer library is not essential to understand trampolining.
 
+{:lang="js"}
 ~~~~~~~~
 npm install big-integer
 
@@ -173,7 +182,7 @@ var trampoline = function (fn) {
     }
 
     return result;
-    
+
   });
 };
 
@@ -183,7 +192,7 @@ function factorial (n) {
     ? function () { return myself(acc.times(n), n.minus(1)); }
     : acc
   });
-  
+
   return _factorial(bigInt.one, bigInt(n));
 }
 
@@ -203,6 +212,7 @@ If trampolining was only for recursive functions, it would have extremely limite
 
 Consider this delightfully simple example of two co-recursive functions:
 
+{:lang="js"}
 ~~~~~~~~
 function even (n) {
   return n == 0
@@ -219,6 +229,7 @@ function odd (n) {
 
 Like our `factorial`, it consumes *n* stack space of alternating calls to `even` and `odd`:
 
+{:lang="js"}
 ~~~~~~~~
 even(32768);
   //=> RangeError: Maximum call stack size exceeded
@@ -226,6 +237,7 @@ even(32768);
 
 Obviously we can solve this problem with modulo arithmetic, but consider that what this shows is a pair of functions that call other functions in tail position, not just themselves. As with factorial, we separate the public interface that is not trampolined from the trampolined implementation:
 
+{:lang="js"}
 ~~~~~~~~
 var even = trampoline(_even),
     odd  = trampoline(_odd);
@@ -245,6 +257,7 @@ function _odd (n) {
 
 And presto:
 
+{:lang="js"}
 ~~~~~~~~
 even(32768);
   //=> true

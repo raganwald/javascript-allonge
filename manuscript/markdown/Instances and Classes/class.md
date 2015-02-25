@@ -7,45 +7,54 @@ JavaScript has "classes," for some definition of "class." You've met them alread
 
 Let's see it again: Here's a class of todo items:
 
-    function Todo (name) {
-      this.name = name || 'Untitled';
-      this.done = false;
-    };
-    
-    Todo.prototype.do = function () {
-      this.done = true;
-    };
-    
-    Todo.prototype.undo = function () {
-      this.done = false;
-    };
-    
+{:lang="js"}
+~~~~~~~~
+function Todo (name) {
+  this.name = name || 'Untitled';
+  this.done = false;
+};
+
+Todo.prototype.do = function () {
+  this.done = true;
+};
+
+Todo.prototype.undo = function () {
+  this.done = false;
+};
+~~~~~~~~
+
 You can mix other functionality into this class by extending the prototype with an object:
 
-    extend(Todo.prototype, {
-      prioritize: function (priority) {
-        this.priority = priority;
-      };
-    });
-    
+{:lang="js"}
+~~~~~~~~
+extend(Todo.prototype, {
+  prioritize: function (priority) {
+    this.priority = priority;
+  };
+});
+~~~~~~~~
+
 Naturally, that allows us to define mixins for other classes:
 
-    var ColourCoded = {
-      setColourRGB: function (r, g, b) {
-        // ...
-      },
-      getColourRGB: function () {
-        // ...
-      },
-      setColourCSS: function (css) {
-        // ...
-      },
-      getColourCSS: function () {
-        // ...
-      }
-    };
-    
-    extend(Todo.prototype, ColourCoded);
+{:lang="js"}
+~~~~~~~~
+var ColourCoded = {
+  setColourRGB: function (r, g, b) {
+    // ...
+  },
+  getColourRGB: function () {
+    // ...
+  },
+  setColourCSS: function (css) {
+    // ...
+  },
+  getColourCSS: function () {
+    // ...
+  }
+};
+
+extend(Todo.prototype, ColourCoded);
+~~~~~~~~
 
 This does exactly the same thing as declaring a "class," defining a "method," and adding a "mixin." How does it differ? It doesn't use the words *class*, *method*, *def(ine)* or *mixin*. And it has this `prototype` property that most other popular languages eschew. It also doesn't deal with inheritance, a deal-breaker for programmers who are attached to taxonomies.
 

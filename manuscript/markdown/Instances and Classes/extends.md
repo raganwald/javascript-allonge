@@ -4,68 +4,74 @@ You recall from [Composition and Extension](#extensible) that we extended a Plai
 
 Here's our `Queue`:
 
-    var Queue = function () {
-      extend(this, {
-        array: [],
-        head: 0,
-        tail: -1
-      })
-    };
+{:lang="js"}
+~~~~~~~~
+var Queue = function () {
+  extend(this, {
+    array: [],
+    head: 0,
+    tail: -1
+  })
+};
 
-    extend(Queue.prototype, {
-      pushTail: function (value) {
-        return this.array[this.tail += 1] = value
-      },
-      pullHead: function () {
-        var value;
+extend(Queue.prototype, {
+  pushTail: function (value) {
+    return this.array[this.tail += 1] = value
+  },
+  pullHead: function () {
+    var value;
 
-        if (!this.isEmpty()) {
-          value = this.array[this.head]
-          this.array[this.head] = void 0;
-          this.head += 1;
-          return value
-        }
-      },
-      isEmpty: function () {
-        return this.tail < this.head
-      }
-    });
+    if (!this.isEmpty()) {
+      value = this.array[this.head]
+      this.array[this.head] = void 0;
+      this.head += 1;
+      return value
+    }
+  },
+  isEmpty: function () {
+    return this.tail < this.head
+  }
+});
+~~~~~~~~
 
 And here's what our `Deque` would look like before we wire things together:
 
-    var Dequeue = function () {
-      Queue.prototype.constructor.call(this)
-    };
+{:lang="js"}
+~~~~~~~~
+var Dequeue = function () {
+  Queue.prototype.constructor.call(this)
+};
 
-    Dequeue.INCREMENT = 4;
+Dequeue.INCREMENT = 4;
 
-    extend(Dequeue.prototype, {
-      size: function () {
-        return this.tail - this.head + 1
-      },
-      pullTail: function () {
-        var value;
+extend(Dequeue.prototype, {
+  size: function () {
+    return this.tail - this.head + 1
+  },
+  pullTail: function () {
+    var value;
 
-        if (!this.isEmpty()) {
-          value = this.array[this.tail];
-          this.array[this.tail] = void 0;
-          this.tail -= 1;
-          return value
-        }
-      },
-      pushHead: function (value) {
-        var i;
+    if (!this.isEmpty()) {
+      value = this.array[this.tail];
+      this.array[this.tail] = void 0;
+      this.tail -= 1;
+      return value
+    }
+  },
+  pushHead: function (value) {
+    var i;
 
-        if (this.head === 0) {
-          for (i = this.tail; i >= this.head; --i) {
-            this.array[i + this.constructor.INCREMENT] = this.array[i]
-          }
-          this.tail += this.constructor.INCREMENT;
-          this.head += this.constructor.INCREMENT
-        }
-        this.array[this.head -= 1] = value
+    if (this.head === 0) {
+      for (i = this.tail; i >= this.head; --i) {
+        this.array[i + this.constructor.INCREMENT] = this.array[i]
       }
-    });
+      this.tail += this.constructor.INCREMENT;
+      this.head += this.constructor.INCREMENT
+    }
+    this.array[this.head -= 1] = value
+  }
+});
+~~~~~~~~
 
 A> We obviously want to do all of a `Queue`'s initialization, thus we called `Queue.prototype.constructor.call(this)`. But why not just call `Queue.call(this)`? As we'll see when we wire everything together, this ensures that we're calling the correct constructor even when `Queue` itself is wired to inherit from another constructor function.
 
@@ -77,60 +83,66 @@ Yes they can. Imagine that `Deque.prototype` was a proxy for an instance of `Que
 
 Here's such a proxy:
 
-    var QueueProxy = function () {}
+{:lang="js"}
+~~~~~~~~
+var QueueProxy = function () {}
 
-    QueueProxy.prototype = Queue.prototype
+QueueProxy.prototype = Queue.prototype
 
-Our `QueueProxy` isn't actually a `Queue`, but its `prototype` is an alias of `Queue.prototype`. Thus, it can pick up `Queue`'s behaviour. We want to use it for our `Deque`'s prototype. Let's insert that code in our class definition:
+`QueueProxy` isn't actually a `Queue`, but its `prototype` is an alias of `Queue.prototype`. Thus, it can pick up `Queue`'s behaviour. We want to use it for our `Deque`'s prototype. Let's insert that code in our class definition:
 
-    var Dequeue = function () {
-      Queue.prototype.constructor.call(this)
-    };
+var Dequeue = function () {
+  Queue.prototype.constructor.call(this)
+};
 
-    Dequeue.INCREMENT = 4;
+Dequeue.INCREMENT = 4;
 
-    Dequeue.prototype = new QueueProxy();
+Dequeue.prototype = new QueueProxy();
 
-    extend(Dequeue.prototype, {
-      size: function () {
-        return this.tail - this.head + 1
-      },
-      pullTail: function () {
-        var value;
+extend(Dequeue.prototype, {
+  size: function () {
+    return this.tail - this.head + 1
+  },
+  pullTail: function () {
+    var value;
 
-        if (!this.isEmpty()) {
-          value = this.array[this.tail];
-          this.array[this.tail] = void 0;
-          this.tail -= 1;
-          return value
-        }
-      },
-      pushHead: function (value) {
-        var i;
+    if (!this.isEmpty()) {
+      value = this.array[this.tail];
+      this.array[this.tail] = void 0;
+      this.tail -= 1;
+      return value
+    }
+  },
+  pushHead: function (value) {
+    var i;
 
-        if (this.head === 0) {
-          for (i = this.tail; i >= this.head; --i) {
-            this.array[i + this.constructor.INCREMENT] = this.array[i]
-          }
-          this.tail += this.constructor.INCREMENT;
-          this.head += this.constructor.INCREMENT
-        }
-        this.array[this.head -= 1] = value
+    if (this.head === 0) {
+      for (i = this.tail; i >= this.head; --i) {
+        this.array[i + this.constructor.INCREMENT] = this.array[i]
       }
-    });
+      this.tail += this.constructor.INCREMENT;
+      this.head += this.constructor.INCREMENT
+    }
+    this.array[this.head -= 1] = value
+  }
+});
+~~~~~~~~
 
 And it seems to work:
 
-    d = new Dequeue()
-    d.pushTail('Hello')
-    d.pushTail('JavaScript')
-    d.pushTail('!')
-    d.pullHead()
-      //=> 'Hello'
-    d.pullTail()
-      //=> '!'
-    d.pullHead()
-      //=> 'JavaScript'
+{:lang="js"}
+~~~~~~~~
+d = new Dequeue()
+d.pushTail('Hello')
+d.pushTail('JavaScript')
+d.pushTail('!')
+d.pullHead()
+  //=> 'Hello'
+d.pullTail()
+  //=> '!'
+d.pullHead()
+  //=> 'JavaScript'
+~~~~~~~~
 
 Wonderful!
 
@@ -138,20 +150,29 @@ Wonderful!
 
 How about some of the other things we've come to expect from instances?
 
-    d.constructor == Dequeue
-      //=> false
+{:lang="js"}
+~~~~~~~~
+d.constructor == Dequeue
+  //=> false
+~~~~~~~~
 
 Oops! Messing around with Dequeue's prototype broke this important equivalence. Luckily for us, the `constructor` property is mutable for objects we create. So, let's make a small change to `QueueProxy`:
 
-    var QueueProxy = function () {
-      this.constructor = Dequeue;
-    }
-    QueueProxy.prototype = Queue.prototype
+{:lang="js"}
+~~~~~~~~
+var QueueProxy = function () {
+  this.constructor = Dequeue;
+}
+QueueProxy.prototype = Queue.prototype
+~~~~~~~~
 
 Repeat. Now it works:
 
-    d.constructor === Dequeue
-      //=> true
+{:lang="js"}
+~~~~~~~~
+d.constructor === Dequeue
+  //=> true
+~~~~~~~~
 
 The `QueueProxy` function now sets the `constructor` for every instance of a `QueueProxy` (hopefully just the one we need for the `Dequeue` class). It returns the object being created (it could also return `undefined` and work. But if it carelessly returned something else, that would be assigned to `Dequeue`'s prototype, which would break our code).
 
@@ -159,50 +180,56 @@ The `QueueProxy` function now sets the `constructor` for every instance of a `Qu
 
 Let's turn our mechanism into a function:
 
-    var child = function (parent, child) {
-      var proxy = function () {
-        this.constructor = child
-      }
-      proxy.prototype = parent.prototype;
-      child.prototype = new proxy();
-      return child;
-    }
+{:lang="js"}
+~~~~~~~~
+var child = function (parent, child) {
+  var proxy = function () {
+    this.constructor = child
+  }
+  proxy.prototype = parent.prototype;
+  child.prototype = new proxy();
+  return child;
+}
+~~~~~~~~
 
 And use it in `Dequeue`:
 
-    var Dequeue = child(Queue, function () {
-      Queue.prototype.constructor.call(this)
-    });
+{:lang="js"}
+~~~~~~~~
+var Dequeue = child(Queue, function () {
+  Queue.prototype.constructor.call(this)
+});
 
-    Dequeue.INCREMENT = 4;
+Dequeue.INCREMENT = 4;
 
-    extend(Dequeue.prototype, {
-      size: function () {
-        return this.tail - this.head + 1
-      },
-      pullTail: function () {
-        var value;
+extend(Dequeue.prototype, {
+  size: function () {
+    return this.tail - this.head + 1
+  },
+  pullTail: function () {
+    var value;
 
-        if (!this.isEmpty()) {
-          value = this.array[this.tail];
-          this.array[this.tail] = void 0;
-          this.tail -= 1;
-          return value
-        }
-      },
-      pushHead: function (value) {
-        var i;
+    if (!this.isEmpty()) {
+      value = this.array[this.tail];
+      this.array[this.tail] = void 0;
+      this.tail -= 1;
+      return value
+    }
+  },
+  pushHead: function (value) {
+    var i;
 
-        if (this.head === 0) {
-          for (i = this.tail; i >= this.head; --i) {
-            this.array[i + this.constructor.INCREMENT] = this.array[i]
-          }
-          this.tail += this.constructor.INCREMENT;
-          this.head += this.constructor.INCREMENT
-        }
-        this.array[this.head -= 1] = value
+    if (this.head === 0) {
+      for (i = this.tail; i >= this.head; --i) {
+        this.array[i + this.constructor.INCREMENT] = this.array[i]
       }
-    });
+      this.tail += this.constructor.INCREMENT;
+      this.head += this.constructor.INCREMENT
+    }
+    this.array[this.head -= 1] = value
+  }
+});
+~~~~~~~~
 
 ### future directions
 

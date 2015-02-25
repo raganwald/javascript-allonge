@@ -15,14 +15,20 @@ All values are expressions. Say you hand the barista a café Cubano. Yup, you ha
 
 Let's try this with something the computer understands easily:
 
-    42
+{:lang="js"}
+~~~~~~~~
+42
+~~~~~~~~
 
 Is this an expression? A value? Neither? Or both?
 
 The answer is, this is both an expression *and* a value.[^representation] The way you can tell that it's both is very easy: When you type it into JavaScript, you get the same thing back, just like our café Cubano:
 
-    42
-      //=> 42
+{:lang="js"}
+~~~~~~~~
+42
+  //=> 42
+~~~~~~~~
 
 [^representation]: Technically, it's a *representation* of a value using Base10 notation, but we needn't worry about that in this book. You and I both understand that this means "42," and so does the computer.
 
@@ -36,8 +42,11 @@ Now the barista gives us back an espresso. And if we hand over the espresso, we 
 
 Let's try this as well with something else the computer understands easily:
 
-    "JavaScript" + " " + "Allonge"
-      //=> "JavaScript Allonge"
+{:lang="js"}
+~~~~~~~~
+"JavaScript" + " " + "Allonge"
+  //=> "JavaScript Allonge"
+~~~~~~~~
 
 Now we see that "strings" are values, and you can make an expression out of strings and an operator `+`. Since strings are values, they are also expressions by themselves. But strings with operators are not values, they are expressions. Now we know what was missing with our "coffee grounds plus hot water" example. The coffee grounds were a value, the boiling hot water was a value, and the "plus" operator between them made the whole thing an expression that was not a value.
 
@@ -45,32 +54,41 @@ Now we see that "strings" are values, and you can make an expression out of stri
 
 In JavaScript, we test whether two values are identical with the `===` operator, and whether they are not identical with the `!==` operator:
 
-		2 === 2
-			//=> true
-			
-		'hello' !== 'goodbye'
-			//=> true
-			
+{:lang="js"}
+~~~~~~~~
+2 === 2
+	//=> true
+
+'hello' !== 'goodbye'
+	//=> true
+~~~~~~~~
+
 How does `===` work, exactly? Imagine that you're shown a cup of coffee. And then you're shown another cup of coffee. Are the two cups "identical?" In JavaScript, there are four possibilities:
 
 First, sometimes, the cups are of different kinds. One is a demitasse, the other a mug. This corresponds to comparing two things in JavaScript that have different *types*. For example, the string `"2"` is not the same thing as the number `2`. Strings and numbers are different types, so strings and numbers are never identical:
 
-    2 === '2'
-      //=> false
-      
-    true !== 'true'
-      //=> true
+{:lang="js"}
+~~~~~~~~
+2 === '2'
+  //=> false
+
+true !== 'true'
+  //=> true
+~~~~~~~~
 
 Second, sometimes, the cups are of the same type--perhaps two espresso cups--but they have different contents. One holds a single, one a double. This corresponds to comparing two JavaScript values that have the same type but different "content." For example, the number `5` is not the same thing as the number `2`.
 
-    true === false
-      //=> false
-      
-    2 !== 5
-      //=> true
-      
-    'two' === 'five'
-      //=> false
+{:lang="js"}
+~~~~~~~~
+true === false
+  //=> false
+
+2 !== 5
+  //=> true
+
+'two' === 'five'
+  //=> false
+~~~~~~~~
 
 What if the cups are of the same type *and* the contents are the same? Well, JavaScript's third and fourth possibilities cover that.
 
@@ -78,12 +96,15 @@ What if the cups are of the same type *and* the contents are the same? Well, Jav
 
 Third, some types of cups have no distinguishing marks on them. If they are the same kind of cup, and they hold the same contents, we have no way to tell the difference between them. This is the case with the strings, numbers, and booleans we have seen so far.
 
-    2 + 2 === 4
-      //=> true
-      
-    (2 + 2 === 4) === (2 !== 5)
-      //=> true
-      
+{:lang="js"}
+~~~~~~~~
+2 + 2 === 4
+  //=> true
+
+(2 + 2 === 4) === (2 !== 5)
+  //=> true
+~~~~~~~~
+
 Note well what is happening with these examples: Even when we obtain a string, number, or boolean as the result of evaluating an expression, it is identical to another value of the same type with the same "content." Strings, numbers, and booleans are examples of what JavaScript calls "value" or "primitive" types. We'll use both terms interchangeably.
 
 We haven't encountered the fourth possibility yet. Stretching the metaphor somewhat, some types of cups have a serial number on the bottom. So even if you have two cups of the same type, and their contents are the same, you can still distinguish between them.
@@ -96,15 +117,21 @@ So what kinds of values might be the same type and have the same contents, but n
 
 An array looks like this: `[1, 2, 3]`. This is an expression, and you can combine `[]` with other expressions. Go wild with things like:
 
-    [2-1, 2, 2+1]
-    [1, 1+1, 1+1+1]
-    
+{:lang="js"}
+~~~~~~~~
+[2-1, 2, 2+1]
+[1, 1+1, 1+1+1]
+~~~~~~~~
+
 Notice that you are always generating arrays with the same contents. But are they identical the same way that every value of `42` is identical to every other value of `42`? Try these for yourself:
 
-    [2-1, 2, 2+1] === [1,2,3]
-    [1,2,3] === [1, 2, 3]
-    [1, 2, 3] === [1, 2, 3]
-  
+{:lang="js"}
+~~~~~~~~
+[2-1, 2, 2+1] === [1,2,3]
+[1,2,3] === [1, 2, 3]
+[1, 2, 3] === [1, 2, 3]
+~~~~~~~~
+
 How about that! When you type `[1, 2, 3]` or any of its variations, you are typing an expression that generates its own *unique* array that is not identical to any other array, even if that other array also looks like `[1, 2, 3]`. It's as if JavaScript is generating new cups of coffee with serial numbers on the bottom.
 
 A> Arrays look exceedingly simple, but this word "reference" is so laden with possibilities that there's an entire chapter devoted to discussing [rebinding and references](#references). Try typing this code out:

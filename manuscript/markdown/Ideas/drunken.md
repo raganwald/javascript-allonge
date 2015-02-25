@@ -77,8 +77,8 @@ LinkedList.prototype.iterator = function() {
 
 function tortoiseAndHareLoopDetector (iterable) {
   var tortoise = iterable.iterator(),
-      hare = iterable.iterator(), 
-      tortoiseValue, 
+      hare = iterable.iterator(),
+      tortoiseValue,
       hareValue;
   while (((tortoiseValue = tortoise()) != null) && ((hare(), hareValue = hare()) != null)) {
     if (tortoiseValue === hareValue) {
@@ -134,7 +134,7 @@ var Game = (function () {
   function Game (size) {
     var i,
         j;
-    
+
     this.size = size
                 ? Math.floor(Math.random() * 8) + 8
                 : size ;
@@ -146,16 +146,16 @@ var Game = (function () {
       }
     }
     this.initialPosition = [
-      2 + Math.floor(Math.random() * (this.size - 4)), 
+      2 + Math.floor(Math.random() * (this.size - 4)),
       2 + Math.floor(Math.random() * (this.size - 4))
     ];
     return this;
   };
-  
+
   Game.prototype.contains = function (position) {
     return position[0] >= 0 && position[0] < this.size && position[1] >= 0 && position[1] < this.size;
   };
-  
+
   Game.prototype.iterator = function () {
     var position = [this.initialPosition[0], this.initialPosition[1]];
     return function () {
@@ -171,9 +171,9 @@ var Game = (function () {
       }
     }.bind(this);
   };
-  
+
   return Game;
-  
+
 })();
 
 var i = new Game().iterator();

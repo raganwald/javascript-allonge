@@ -7,59 +7,68 @@ Combinators for functions come in an unlimited panoply of purposes and effects. 
 
 For example, consider this "class:"
 
-    Todo = function (name) {
-      this.name = name || 'Untitled';
-      this.done = false
-    }
-    
-    extend(Todo.prototype, {
-      do: fluent( function {
-        this.done = true
-      }),
-      undo: fluent( function {
-        this.done = false
-      }),
-      setName: fluent( maybe( function (name) {
-        this.name = name
-      }))
-    });
+{:lang="js"}
+~~~~~~~~
+Todo = function (name) {
+  this.name = name || 'Untitled';
+  this.done = false
+}
+
+extend(Todo.prototype, {
+  do: fluent( function {
+    this.done = true
+  }),
+  undo: fluent( function {
+    this.done = false
+  }),
+  setName: fluent( maybe( function (name) {
+    this.name = name
+  }))
+});
+~~~~~~~~
 
 If we're rolling our own model class, we might mix in [Backbone.Events]. Now we can have views listen to our todo items and render themselves when there's a change. Since we've already seen [before](#before), we'll jump right to the recipe for `after`, a combinator that turns a function into a method decorator:
 
-    function after (decoration) {
-      return function (method) {
-        return function () {
-          var value = method.apply(this, arguments);
-          decoration.call(this, value);
-          return value
-        }
-      }
+{:lang="js"}
+~~~~~~~~
+function after (decoration) {
+  return function (method) {
+    return function () {
+      var value = method.apply(this, arguments);
+      decoration.call(this, value);
+      return value
     }
+  }
+}
+~~~~~~~~
 
 [Backbone.Events]: http://backbonejs.org/#Events
 
 And here it is in use to trigger change events on our `Todo` "class." We're going to be even *more* sophisticated and paramaterize our decorators.
 
-    extend(Todo.prototype, Backbone.Events);
-    
-    function changes (propertyName) {
-      return after(function () {
-        this.trigger('changed changed:'+propertyName, this[propertyName])
-      })
-    }
-    
-    extend(Todo.prototype, {
-      do: fluent( changes('done')( function {
-        this.done = true
-      })),
-      undo: fluent( changes('done')( function {
-        this.done = false
-      })),
-      setName: fluent( changes('name')( maybe( function (name) {
-        this.name = name
-      })))
-    });
-    
+{:lang="js"}
+~~~~~~~~
+extend(Todo.prototype, Backbone.Events);
+
+function changes (propertyName) {
+  return after(function () {
+    this.trigger('changed changed:'+propertyName, this[propertyName])
+  })
+}
+
+extend(Todo.prototype, {
+  do: fluent( changes('done')( function {
+    this.done = true
+  })),
+  undo: fluent( changes('done')( function {
+    this.done = false
+  })),
+  setName: fluent( changes('name')( maybe( function (name) {
+    this.name = name
+  })))
+});
+~~~~~~~~
+
 The decorators act like keywords or annotations, documenting the method's behaviour but clearly separating these secondary concerns from the core logic of the method.
 
 ---
