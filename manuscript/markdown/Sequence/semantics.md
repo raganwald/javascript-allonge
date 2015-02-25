@@ -6,10 +6,13 @@ In JavaScript, statements separated by semicolons have well-defined semantics. W
 
 We are going to spend the entire chapter discussing the semantics of code that looks like this:
 
-    var temp1 = doSomething(seed);
-    var temp2 = andDoSomethingElseWith(temp1);
-    var temp3 = nowDoSomethingWith(temp2);
-    var result = doTheLastThingWith(temp3);
+{:lang="js"}
+~~~~~~~~
+var temp1 = doSomething(seed);
+var temp2 = andDoSomethingElseWith(temp1);
+var temp3 = nowDoSomethingWith(temp2);
+var result = doTheLastThingWith(temp3);
+~~~~~~~~
 
 This code as written looks exactly like the `pipeline` function we saw in the previous section. A `seed` is put into the first function, and the results are pipelined through the functions until we get a result form the last function.
 
@@ -26,35 +29,47 @@ But there is more subtlety involved. Like most other contemporary languages, `&&
 
 In other words, it's something like:
 
-    var foo_value = foo();
-    
-    if (foo_value) {
-      return bar();
-    }
-    else return foo_value;
-    
+{:lang="js"}
+~~~~~~~~
+var foo_value = foo();
+
+if (foo_value) {
+  return bar();
+}
+else return foo_value;
+~~~~~~~~
+
 Note that `bar()` is only evaluated if `foo()` evaluates truthy. If `foo()` evaluates falsy, *the function `bar` is never called*. If you have a long chain, like this:
 
-    foo() && bar() && bash() && fizz() && buzz() && fib() && nachos()
-    
+{:lang="js"}
+~~~~~~~~
+foo() && bar() && bash() && fizz() && buzz() && fib() && nachos()
+~~~~~~~~
+
 If `foo()` evaluates to falsy, none of teh remaining functions will be called. If `foo()` is truthy, `bar()` is then called. If `bar()` is then truthy, `bash()` is then called. If `bash()` is falsy, the remaining functions are not called.
 
 One very handy use for these semantics are when you have a series of "guards" for an action. So let's say we're about to save changes to some kind of record:
 
-    checkUserIsLoggedIn() && userHasPrivileges() && recordIsValid() && saveRecord()
-    
+{:lang="js"}
+~~~~~~~~
+checkUserIsLoggedIn() && userHasPrivileges() && recordIsValid() && saveRecord()
+~~~~~~~~
+
 If `checkUserIsLoggedIn`, `userHasPrivileges`, or `recordIsValid` return falsy, the record will not be saved.
 
 ### ||
 
 The `||` operator also has short-circuit semantics. Given `foo() || bar()`, if `foo()` returns something truthy, `bar` will *not* be called. It's somewhat equivalent to:
 
-    var foo_value = foo();
-    
-    if (foo_value) {
-      return foo_value;
-    }
-    else return bar();
+{:lang="js"}
+~~~~~~~~
+var foo_value = foo();
+
+if (foo_value) {
+  return foo_value;
+}
+else return bar();
+~~~~~~~~
 
 Once again we can chain several functions together, and the chain is aborted if any of the functions return truthy. This has several uses, one of which will be well-known to C programmers.
 
@@ -62,8 +77,11 @@ Some functions return an *error value* if something goes wrong, and `0` if the f
 
 Ignoring for a moment the possibility of asynchronous behaviour, it might look like this:
 
-    openFile() || readFile() || closeFile() || writeCopy() || closeCopy()
-    
+{:lang="js"}
+~~~~~~~~
+openFile() || readFile() || closeFile() || writeCopy() || closeCopy()
+~~~~~~~~
+
 Assuming these functions pass error codes back, if any of them returns a non-zero error code, the remaining functions will not be evaluated.
 
 ### what do && and || tell us?
@@ -84,21 +102,27 @@ So how can we formalize this pattern?
 
 Let's start with something we know, `pipeline`. The implementation we gave was: `pipeline = flip(compose)`. True, but not very helpful. Let's write it out the long way:
 
-    var pipeline = variadic( function (fns) {
-      return function pipeline (seed) {
-        return reduce(fns, function chain (lastResult, fn) { return fn(lastResult); }, seed);
-      };
-    });
+{:lang="js"}
+~~~~~~~~
+var pipeline = variadic( function (fns) {
+  return function pipeline (seed) {
+    return reduce(fns, function chain (lastResult, fn) { return fn(lastResult); }, seed);
+  };
+});
+~~~~~~~~
 
 The interesting thing here is the function within the `reduce` method: `function chain (value, fn) { return fn(value); }`. Notice we're naming it "chain" because that's what it does, it chains the functions together by taking the result of one and putting it into the next.
 
 Chain is the function responsible for invoking each of the functions being pipelined. Since that's what we're interested in, let's extract it as a parameter. Now that we're modifying `pipeline`, we'll also give it a new name:
 
-    var sequence = variadic( function (chain, fns) {
-      return function sequence (seed) {
-        return reduce(fns, chain, seed);
-      };
-    });
+{:lang="js"}
+~~~~~~~~
+var sequence = variadic( function (chain, fns) {
+  return function sequence (seed) {
+    return reduce(fns, chain, seed);
+  };
+});
+~~~~~~~~
 
 Notice that if we wanted to, we could implement `pipeline` as `sequence(function chain (lastResult, fn) { return fn(lastResult); }, ... )`. This shows that our new function is a generalized implementation, with `pipeline` being a specific instance.
 
@@ -106,34 +130,49 @@ Notice that if we wanted to, we could implement `pipeline` as `sequence(function
 
 We're not allowed to name variables `&&` or `||`, so we'll use words:
 
-    var andand = {
-      chain: function (value, fn) {
-        return value ? fn(value) : value;
-      }
-    };
+{:lang="js"}
+~~~~~~~~
+var andand = {
+  chain: function (value, fn) {
+    return value ? fn(value) : value;
+  }
+};
 
-    var oror = {
-      chain: function (value, fn) {
-        return value ? value : fn(value);
-      }
-    };
+var oror = {
+  chain: function (value, fn) {
+    return value ? value : fn(value);
+  }
+};
+~~~~~~~~
 
 Now we can implement the semantics we discussed above. Instead of:
 
-    checkUserIsLoggedIn() && userHasPrivileges() && recordIsValid() && saveRecord()
-    
+{:lang="js"}
+~~~~~~~~
+checkUserIsLoggedIn() && userHasPrivileges() && recordIsValid() && saveRecord()
+~~~~~~~~
+
 We write:
 
-    sequence(andand.chain, checkUserIsLoggedIn, userHasPrivileges, recordIsValid, saveRecord)()
+{:lang="js"}
+~~~~~~~~
+sequence(andand.chain, checkUserIsLoggedIn, userHasPrivileges, recordIsValid, saveRecord)()
+~~~~~~~~
 
 And instead of:
 
-    openFile() || readFile() || closeFile() || writeCopy() || closeCopy()
-    
+{:lang="js"}
+~~~~~~~~
+openFile() || readFile() || closeFile() || writeCopy() || closeCopy()
+~~~~~~~~
+
 We write:
 
-    sequence(oror.chain, openFile, openFile, closeFile, writeCopy, closeCopy)
-    
+{:lang="js"}
+~~~~~~~~
+sequence(oror.chain, openFile, openFile, closeFile, writeCopy, closeCopy)
+~~~~~~~~
+
 Being able to plug our chain function in lets us implement `&&` and `||` semantics in `sequence`. This raises two questions:
 
 1. Is this *really* superior to writing things like `openFile() || readFile() || closeFile() ...`?

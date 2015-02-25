@@ -2,16 +2,22 @@
 
 Some text in monospaced type like `this` in the text represents some code being discussed. Some monospaced code in its own lines also represents code being discussed:
 
-    this.async = do (async = undefined) ->
+{:lang="js"}
+~~~~~~~~
+this.async = do (async = undefined) ->
 
-      async = (fn) ->
-        (argv..., callback) ->
-          callback(fn.apply(this, argv))
-          
+  async = (fn) ->
+    (argv..., callback) ->
+      callback(fn.apply(this, argv))
+~~~~~~~~
+
 Sometimes it will contain some code for you to type in for yourself. When it does, the result of typing something in will often be shown using `//=>`, like this:
 
-    2 + 2
-      //=> 4
+{:lang="js"}
+~~~~~~~~
+2 + 2
+  //=> 4
+~~~~~~~~
 
 T> A paragraph marked like this is a "key fact." It summarizes an idea without adding anything new.
 

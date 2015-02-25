@@ -6,24 +6,27 @@ As we've seen, JavaScript functions take values as arguments and return values. 
 
 Here's a very simple higher-order function that takes a function as an argument:
 
-    function repeat (num, fn) {
-      var i, value;
-      
-      for (i = 1; i <= num; ++i)
-        value = fn(i);
-      
-      return value;
-    }
-    
-    repeat(3, function () { 
-      console.log('Hello') 
-    })
-      //=>
-        'Hello'
-        'Hello'
-        'Hello'
-        undefined
-    
+{:lang="js"}
+~~~~~~~~
+function repeat (num, fn) {
+  var i, value;
+
+  for (i = 1; i <= num; ++i)
+    value = fn(i);
+
+  return value;
+}
+
+repeat(3, function () {
+  console.log('Hello')
+})
+  //=>
+    'Hello'
+    'Hello'
+    'Hello'
+    undefined
+~~~~~~~~
+
 Higher-order functions dominate *JavaScript Allongé*. But before we go on, we'll talk about some specific types of higher-order functions.
 
 ### combinators
@@ -42,32 +45,44 @@ In this book, we will be using a looser definition of "combinator:" Higher-order
 
 Let's start with a useful combinator: Most programmers call it *Compose*, although the logicians call it the B combinator or "Bluebird." Here is the typical[^bluebird] programming implementation:
 
-    function compose (a, b) {
-      return function (c) {
-        return a(b(c))
-      }
-    }
+{:lang="js"}
+~~~~~~~~
+function compose (a, b) {
+  return function (c) {
+    return a(b(c))
+  }
+}
+~~~~~~~~
 
 Let's say we have:
 
-    function addOne (number) {
-      return number + 1
-    }
-    
-    function doubleOf (number) {
-      return number * 2
-    }
+{:lang="js"}
+~~~~~~~~
+function addOne (number) {
+  return number + 1
+}
+
+function doubleOf (number) {
+  return number * 2
+}
+~~~~~~~~
 
 With `compose`, anywhere you would write
 
-    function doubleOfAddOne (number) {
-      return doubleOf(addOne(number))
-    }
-    
+{:lang="js"}
+~~~~~~~~
+function doubleOfAddOne (number) {
+  return doubleOf(addOne(number))
+}
+~~~~~~~~
+
 You could also write:
 
-    var doubleOfAddOne = compose(doubleOf, addOne);
-    
+{:lang="js"}
+~~~~~~~~
+var doubleOfAddOne = compose(doubleOf, addOne);
+~~~~~~~~
+
 This is, of course, just one example of many. You'll find lots more perusing the recipes in this book. While some programmers believe "There Should Only Be One Way To Do It," having combinators available as well as explicitly writing things out with lots of symbols and keywords has some advantages when used judiciously.
 
 ### a balanced statement about combinators
@@ -78,27 +93,39 @@ Code that uses a lot of combinators tends to name the verbs and adverbs (like `d
 
 A *function decorator* is a higher-order function that takes one function as an argument, returns another function, and the returned function is a variation of the argument function. Here's a ridiculous example of a decorator:
 
-    function not (fn) {
-      return function (argument) {
-        return !fn(argument)
-      }
-    }
+{:lang="js"}
+~~~~~~~~
+function not (fn) {
+  return function (argument) {
+    return !fn(argument)
+  }
+}
+~~~~~~~~
 
 So instead of writing `!someFunction(42)`, you can write `not(someFunction)(42)`. Hardly progress. But like `compose`, you could write either
 
-    function something (x) {
-      return x != null
-    }
+{:lang="js"}
+~~~~~~~~
+function something (x) {
+  return x != null
+}
+~~~~~~~~
 
 And elsewhere, he writes:
 
-    function nothing (x) {
-      return !something(x)
-    }
+{:lang="js"}
+~~~~~~~~
+function nothing (x) {
+  return !something(x)
+}
+~~~~~~~~
 
 Or:
 
-    var nothing = not(something);
+{:lang="js"}
+~~~~~~~~
+var nothing = not(something);
+~~~~~~~~
 
 `not` is a function decorator because it modifies a function while remaining strongly related to the original function's semantics. You'll see other function decorators in the recipes, like [once](#once), [mapWith](#mapWith), and [maybe](#maybe). Function decorators aren't strict about being pure functions, so there's more latitude for making decorators than combinators.
 

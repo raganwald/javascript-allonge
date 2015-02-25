@@ -2,33 +2,45 @@
 
 It's time to see how a function within a function works:
 
-    (function (x) {
-      return function (y) {
-        return x
-      }
-    })(1)(2)
-      //=> 1
+{:lang="js"}
+~~~~~~~~
+(function (x) {
+  return function (y) {
+    return x
+  }
+})(1)(2)
+  //=> 1
+~~~~~~~~
 
 First off, let's use what we learned above. Given `(`*some function*`)(`*some argument*`)`, we know that we apply the function to the argument, create an environment, bind the value of the argument to the name, and evaluate the function's expression. So we do that first with this code:
 
-    (function (x) {
-      return function (y) {
-        return x
-      }
-    })(1)
-      //=> [Function]
-      
+{:lang="js"}
+~~~~~~~~
+(function (x) {
+  return function (y) {
+    return x
+  }
+})(1)
+  //=> [Function]
+~~~~~~~~
+
 The environment belonging to the function with signature `function (x) ...` becomes `{x: 1, ...}`, and the result of applying the function is another function value. It makes sense that the result value is a function, because the expression for `function (x) ...`'s body is:
 
-      function (y) {
-        return x
-      }
+{:lang="js"}
+~~~~~~~~
+function (y) {
+  return x
+}
+~~~~~~~~
 
 So now we have a value representing that function. Then we're going to take the value of that function and apply it to the argument `2`, something like this:
 
-      (function (y) {
-        return x
-      })(2)
+{:lang="js"}
+~~~~~~~~
+(function (y) {
+  return x
+})(2)
+~~~~~~~~
 
 So we seem to get a new environment `{y: 2, ...}`. How is the expression `x` going to be evaluated in that function's environment? There is no `x` in its environment, it must come from somewhere else.
 
@@ -42,26 +54,29 @@ A> Now let's enjoy a relaxed Allongé before we continue!
 
 The function `function (y) { return x }` is interesting. It contains a *free variable*, `x`.[^nonlocal] A free variable is one that is not bound within the function. Up to now, we've only seen one way to "bind" a variable, namely by passing in an argument with the same name. Since the function `function (y) { return x }` doesn't have an argument named `x`, the variable `x` isn't bound in this function, which makes it "free."
 
-[^nonlocal]: You may also hear the term "non-local variable." [Both are correct.](https://en.wikipedia.org/wiki/Free_variables_and_bound_variables) 
+[^nonlocal]: You may also hear the term "non-local variable." [Both are correct.](https://en.wikipedia.org/wiki/Free_variables_and_bound_variables)
 
 Now that we know that variables used in a function are either bound or free, we can bifurcate functions into those with free variables and those without:
 
   * Functions containing no free variables are called *pure functions*.
   * Functions containing one or more free variables are called *closures*.
-  
+
 Pure functions are easiest to understand. They always mean the same thing wherever you use them. Here are some pure functions we've already seen:
 
-    function () {}
-    
-    function (x) {
-      return x
-    }
-      
-    function (x) {
-      return function (y) {
-        return x
-      }
-    }
+{:lang="js"}
+~~~~~~~~
+function () {}
+
+function (x) {
+  return x
+}
+
+function (x) {
+  return function (y) {
+    return x
+  }
+}
+~~~~~~~~
 
 The first function doesn't have any variables, therefore doesn't have any free variables. The second doesn't have any free variables, because its only variable is bound. The third one is actually two functions, one inside the other. `function (y) ...` has a free variable, but the entire expression refers to `function (x) ...`, and it doesn't have a free variable: The only variable anywhere in its body is `x`, which is certainly bound within `function (x) ...`.
 
@@ -86,19 +101,25 @@ A> `function (x) { return x }` is called the I Combinator or Identity Function. 
 
 Functions can have grandparents too:
 
-    function (x) {
-      return function (y) {
-        return function (z) {
-          return x + y + z
-        }
-      }
+{:lang="js"}
+~~~~~~~~
+function (x) {
+  return function (y) {
+    return function (z) {
+      return x + y + z
     }
+  }
+}
+~~~~~~~~
 
 This function does much the same thing as:
 
-    function (x, y, z) {
-      return x + y + z
-    }
+{:lang="js"}
+~~~~~~~~
+function (x, y, z) {
+  return x + y + z
+}
+~~~~~~~~
 
 Only you call it with `(1)(2)(3)` instead of `(1, 2, 3)`. The other big difference is that you can call it with `(1)` and get a function back that you can later call with `(2)(3)`.
 
@@ -113,24 +134,30 @@ A> The first function is the result of [currying] the second function. Calling a
 
 An interesting thing happens when a variable has the same name as an ancestor environment's variable. Consider:
 
-    function (x) {
-      return function (x, y) {
-        return x + y
-      }
-    }
+{:lang="js"}
+~~~~~~~~
+function (x) {
+  return function (x, y) {
+    return x + y
+  }
+}
+~~~~~~~~
 
 The function `function (x, y) { return x + y }` is a pure function, because its `x` is defined within its own environment. Although its parent also defines an `x`, it is ignored when evaluating `x + y`. JavaScript always searches for a binding starting with the functions own environment and then each parent in turn until it finds one. The same is true of:
 
-    function (x) {
-      return function (x, y) {
-        return function (w, z) {
-          return function (w) {
-            return x + y + z
-          }
-        }
+{:lang="js"}
+~~~~~~~~
+function (x) {
+  return function (x, y) {
+    return function (w, z) {
+      return function (w) {
+        return x + y + z
       }
     }
-          
+  }
+}
+~~~~~~~~
+
 When evaluating `x + y + z`, JavaScript will find `x` and `y` in the great-grandparent scope and `z` in the parent scope. The `x` in the great-great-grandparent scope is ignored, as are both `w`s. When a variable has the same name as an ancestor environment's binding, it is said to *shadow* the ancestor.
 
 This is often a good thing.
@@ -145,12 +172,15 @@ JavaScript always has the notion of at least one environment we do not control: 
 
 Sometimes, programmers wish to avoid this. If you don't want your code to operate directly within the global environment, what can you do? Create an environment for them, of course. Many programmers choose to write every JavaScript file like this:
 
-    // top of the file
-    (function () {
-      
-      // ... lots of JavaScript ...
-      
-    })();
-    // bottom of the file
+{:lang="js"}
+~~~~~~~~
+// top of the file
+(function () {
+
+  // ... lots of JavaScript ...
+
+})();
+// bottom of the file
+~~~~~~~~
 
 The effect is to insert a new, empty environment in between the global environment and your own functions: `{x: 1, '..': {'..': `*global environment*`}}`. As we'll see when we discuss mutable state, this helps to prevent programmers from accidentally changing the global state that is shared by code in every file when they use the [var keyword](#var) properly.
