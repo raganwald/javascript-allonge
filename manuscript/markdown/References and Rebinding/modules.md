@@ -85,7 +85,7 @@ For example, this date format function cribbed from somewhere or other has a hel
             day_diff > 360 && Math.floor( day_diff / 360) + " years " + 
             Math.floor(day_diff%360/32) + " months ago") + '</span>';
       }
-      else return '-'
+      else return '-';
       
       function unformattedDate (time) {
         return new Date((time || "").replace(/[-+]/g,"/").
