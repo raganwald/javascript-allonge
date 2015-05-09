@@ -2,9 +2,9 @@
 
 JavaScript also provides objects. The word "object" is loaded in programming circles, due to the widespread use of the term "object-oriented programming" that was coined by Alan Kay but has since come to mean many, many things to many different people.
 
-In JavaScript, an object[^pojo] is a map from names to values, a lot like an environment. The most common syntax for creating an object is simple:
+In JavaScript, an object[^pojo2] is a map from names to values, a lot like an environment. The most common syntax for creating an object is simple:
 
-[^pojo]: Tradition would have us call objects that don't contain any functions "POJOs," meaning Plain Old JavaScript Objects.
+[^pojo2]: Tradition would have us call objects that don't contain any functions "POJOs," meaning Plain Old JavaScript Objects.
 
     { year: 2012, month: 6, day: 14 }
 
