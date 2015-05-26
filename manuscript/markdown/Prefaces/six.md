@@ -35,8 +35,8 @@ But in ECMAScript-2015, we write:
         }
       }
 
-Other changes include the introduction of the `class` keyword, which leads to a greter interest in working with objects, prototypes, and functions.
+Other changes include the introduction of the `class` keyword, which leads to a greater interest in working with objects, prototypes, and functions.
 
-For this reason, this original manuscript has been retired, and a substantialy updated edition, [JavaScript Allongé, the "Six" Edition][j6] has been written. Please enjoy this copy, but be sure to read the latest edition.
+For this reason, this original manuscript has been retired, and a substantially updated edition, [JavaScript Allongé, the "Six" Edition][j6] has been written. Please enjoy this copy, but be sure to read the latest edition.
 
 [j6]: https://leanpub.com/javascriptallongesix
