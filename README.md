@@ -1,4 +1,4 @@
-# A personal letter from Reg Braithwaite
+# JavaScript Allongé (the original edition) by Reg Braithwaite
 
 Dear friends and readers:
 
