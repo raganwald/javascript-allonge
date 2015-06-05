@@ -10,19 +10,19 @@ On October 1st, 2013, the original **JavaScript Allongé** became free: It is no
 
 Read the [license](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US) yourself. The bottom line is, it’s free, *free*, **FREE**! And don’t just take my word for it, this repository contains the markdown source for the entire book.
 
-In May 2015, [JavaScript Allongé, the "Six" Edition](https://leanpub.com/javascriptallongesix) replaced the original version. Although it is not freely licensed, it *is* [free to read online](https://leanpub.com/javascriptallongesix/read).
+In May 2015, [JavaScript Allongé, the "Six" Edition][ja6] replaced the original version. Although it is not freely licensed, it *is* [free to read online](https://leanpub.com/javascriptallongesix/read).
+
+[ja6]: https://leanpub.com/javascriptallongesix
 
 ## q & a
 
 ### I don't want to pay to download a PDF. Can I make my own?
 
-Yes, you can use the markdown source in this repository to make your own PDF. Or any other format. Please be aware that while it's technically possible to game the LeanPub system to produce the PDF or other formats, I ask you as a personal favour to find another way to make a PDF.
-
-The license permits this choice, but IMO it is contrary to the spirit of sharing and openness to use their resources and work to do something that isn't aligned with their mission. And of course, they may not care for the idea, I don't know and I don't want to undermine what has been a tremendous service for helping people write great technical books.
+Yes, you can use the markdown source in this repository to make your own PDF. Or any other format.
 
 ### Great book! Can I still buy it?
 
-Not from me! Instead, [please but the new edition](https://leanpub.com/javascriptallongesix).
+Not from me! Instead, [please buy the new edition](https://leanpub.com/javascriptallongesix).
 
 ### I don't want to buy it, but I'd like to say "thank you" with a tip.
 
@@ -36,23 +36,11 @@ And I'd also like you to share it, in this form, in PDF, or anything else. Go wi
 
 ### Hey, I have a great way to make money with this.
 
-Go for it, you are free to make commercial use of the work. For example, you could host it on your site and make money from ads, or write a JS tool and use the book as part of the help content.
-
-It's all good, just follow the [license terms][license]. It is technically possible to create an identical clone of the book on LeanPub. I do not prohibit this activity, but I do ask you as a personal favour to ask yourself whether you could do *even better*, for instance to add value by adding your own annotations, expansions, and commentary. I'd love to see an "Annotated JavaScript Allongé."
-
-I'd also love to see translations, editions with large print, or anything else that brings something new to the world. Many people have asked for a hard-copy version. Who will be the first to set up shop on lulu.com?
+Go for it, you are free to make commercial use of the work. For example, you could host it on your site and make money from ads, or write a JS tool and use the book as part of the help content. It's all good, just follow the [license terms][license]. 
 
 ### I found a typo/error! Can I email you about it?
 
-Thanks, but my email inbox is a disaster zone. Let's treat the book like OSS. In order of my preference, you should:
-
-1. Create an [issue], fork the repo, fix the issue, and then send me a [pull request][pull]. (Best!!)
-2. Fork the repo, fix things to your satisfaction, and then send me a [pull request][pull]. (Better!)
-3. Create an [issue]. (Good.)
-
-If you have emailed me and I haven't replied, I've probably declared email bankruptcy and lost your email. Sorry, please create an [issue].
-
-Thanks!
+This book is no longer actively maintained. But you might want to see if the error has been fixed in the ["Six Edition][ja6]. Thanks!
 
 [license]: http://creativecommons.org/licenses/by-sa/3.0/deed.en_US "Creative Commons Attribution-ShareAlike 3.0 Unported License"
 [issue]: https://github.com/raganwald/javascript-allonge/issues
