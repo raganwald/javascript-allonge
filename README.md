@@ -1,8 +1,6 @@
 # JavaScript Allongé (the original edition) by Reg Braithwaite
 
-Dear friends and readers:
-
-On October 1st, 2013, the original **JavaScript Allongé** became free: It is now licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License][license]. You are free:
+The original **JavaScript Allongé** is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License][license]. You are free:
 
 * to Share—to copy, distribute and transmit the work
 * to Remix—to adapt the work
@@ -38,7 +36,7 @@ And I'd also like you to share it, in this form, in PDF, or anything else. Go wi
 
 Go for it, you are free to make commercial use of the work. For example, you could host it on your site and make money from ads, or write a JS tool and use the book as part of the help content. It's all good, just follow the [license terms][license]. 
 
-### I found a typo/error! Can I email you about it?
+### I found a typo/error!
 
 This book is no longer actively maintained. But you might want to see if the error has been fixed in the ["Six Edition][ja6]. Thanks!
 
