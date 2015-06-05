@@ -2,27 +2,27 @@
 
 Dear friends and readers:
 
-On October 1st, 2013, I announced that [JavaScript Allongé](https://leanpub.com/javascript-allonge) became free: It is now licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License][license]. You are free:
+On October 1st, 2013, the original **JavaScript Allongé** became free: It is now licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License][license]. You are free:
 
 * to Share—to copy, distribute and transmit the work
 * to Remix—to adapt the work
 * to make commercial use of the work
 
-Read the [license](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US) yourself. The bottom line is, it’s free, *free*, **FREE**!
+Read the [license](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US) yourself. The bottom line is, it’s free, *free*, **FREE**! And don’t just take my word for it, this repository contains the markdown source for the entire book.
 
-And don’t just take my word for it, [here’s the entire book online](https://leanpub.com/javascript-allonge/read).
+In May 2015, [JavaScript Allongé, the "Six" Edition](https://leanpub.com/javascriptallongesix) replaced the original version. Although it is not freely licensed, it *is* [free to read online](https://leanpub.com/javascriptallongesix/read).
 
 ## q & a
 
 ### I don't want to pay to download a PDF. Can I make my own?
 
-Yes, you can take the HTML that is available online or the markdown source in this repository and make your own PDF. Or any other format. Please be aware that while it's technically possible to game the LeanPub system to produce the PDF or other formats, I ask you as a personal favour to find another way to make a PDF.
+Yes, you can use the markdown source in this repository to make your own PDF. Or any other format. Please be aware that while it's technically possible to game the LeanPub system to produce the PDF or other formats, I ask you as a personal favour to find another way to make a PDF.
 
 The license permits this choice, but IMO it is contrary to the spirit of sharing and openness to use their resources and work to do something that isn't aligned with their mission. And of course, they may not care for the idea, I don't know and I don't want to undermine what has been a tremendous service for helping people write great technical books.
 
 ### Great book! Can I still buy it?
 
-[Yes, please do](http://braythwayt.com/2013/10/04/the-freedom-to-pay-thirty-bucks.html "The Freedom to Pay Thirty Bucks").
+Not from me! Instead, [please but the new edition](https://leanpub.com/javascriptallongesix).
 
 ### I don't want to buy it, but I'd like to say "thank you" with a tip.
 
