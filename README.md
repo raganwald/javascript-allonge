@@ -38,7 +38,7 @@ Go for it, you are free to make commercial use of the work. For example, you cou
 
 ### I found a typo/error!
 
-This book is no longer actively maintained. But you might want to see if the error has been fixed in the ["Six Edition][ja6]. Thanks!
+This book is no longer actively maintained. But you might want to see if the error has been fixed in [The "Six" Edition][ja6]. Thanks!
 
 [license]: http://creativecommons.org/licenses/by-sa/3.0/deed.en_US "Creative Commons Attribution-ShareAlike 3.0 Unported License"
 [issue]: https://github.com/raganwald/javascript-allonge/issues
