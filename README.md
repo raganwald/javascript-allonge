@@ -8,7 +8,7 @@ The original **JavaScript Allongé** is licensed under a [Creative Commons Attri
 
 Read the [license](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US) yourself. The bottom line is, it’s free, *free*, **FREE**! And don’t just take my word for it, this repository contains the markdown source for the entire book.
 
-### JavaScript Allongé, the "Six" Edition
+### The "Six" Edition
 
 ![JavaScript Allongé, the "Six" Edition](https://s3.amazonaws.com/titlepages.leanpub.com/javascriptallongesix/large?1436144759)
 
