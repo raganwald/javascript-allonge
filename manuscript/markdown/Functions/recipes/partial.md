@@ -36,6 +36,6 @@ These two recipes are for quickly and simply applying a single argument, either 
     sayHelloToCeline('Eartha')
       //=> 'Hello, Celine, my name is Eartha'
       
-As noted above, our partial recipe allows us to create functions that are partial applications of functions that are context aware. We'd need a different recipe if we wish to create partial applications of object methods.
+As noted above, our partial recipe allows us to create functions that are partial applications of functions that are context aware. We'd need a different recipe if we wished to create partial applications of object methods.
 
 [^inspired]: `callFirst` and `callLast` were inspired by Michael Fogus' [Lemonad](https://github.com/fogus/lemonad). Thanks!
