@@ -2,7 +2,7 @@
 
 ### transient let
 
-In the section on [let and Var](#let), we learned that we can create a new environment any time we want by combining a function definition with a function invocation, to whit:
+In the section on [let and Var](#let), we learned that we can create a new environment any time we want by combining a function definition with a function invocation, to wit:
 
     (function () {
       //
