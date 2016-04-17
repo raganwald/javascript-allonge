@@ -22,7 +22,7 @@ How would this help us in a practical way? Consider building an event-driven app
       someView.render()
     });
     
-This tells `someModel` that when it invoked a `change` event, it should call the anonymous function that in turn invoked `someView`'s `.render` method. Wouldn't it be simpler to simply write:
+This tells `someModel` that when it invokes a `change` event, it should call the anonymous function that in turn invokes `someView`'s `.render` method. Wouldn't it be simpler to write:
 
     someModel.on('change', someView.render);
     
