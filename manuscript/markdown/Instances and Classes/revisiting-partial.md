@@ -8,7 +8,7 @@ Now that we've seen how function contexts work, we can revisit the subject of pa
       })
     })
     
-`Function.prototype.bind` can sometimes be used to accomplish the same thing, but will be much faster. For example, instead of:
+`Function.prototype.bind` can sometimes be used to accomplish the same thing, and will be much faster. For example, instead of:
 
     function add (verb, a, b) { 
       return "The " + verb + " of " + a + ' and ' + b + ' is ' + (a + b) 
