@@ -150,7 +150,7 @@ Functions themselves are instances, and they have methods. For example, every fu
 
 ### impostors
 
-You may have noticed that we use "weasel words" to describe how everything in JavaScript *behaves like* an instance. Everything *behaves as if* it was created by a function with a prototype.
+You may have noticed that we use "weasel words" to describe how everything in JavaScript *behaves like* an instance. Everything *behaves as if* it were created by a function with a prototype.
 
 The full explanation is this: As you know, JavaScript has "value types" like `String`, `Number`, and `Boolean`. As noted in the first chapter, value types are also called *primitives*, and one consequence of the way JavaScript implements primitives is that they aren't objects. Which means they can be identical to other values of the same type with the same contents, but the consequence of certain design decisions is that value types don't actually have methods or constructors. They aren't instances of some constructor.
 
