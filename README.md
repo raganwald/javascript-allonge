@@ -12,7 +12,7 @@ Read the [license](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US) you
 
 ![JavaScript Allongé, the "Six" Edition](https://s3.amazonaws.com/titlepages.leanpub.com/javascriptallongesix/large?1436144759)
 
-In May 2015, [JavaScript Allongé, the "Six" Edition][ja6] replaced the original version. Although it is not freely licensed, it *is* [free to read online](https://leanpub.com/javascriptallongesix/read).
+In May 2015, [JavaScript Allongé, the "Six" Edition][ja6] replaced the original version. It is now also licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License][license].
 
 [ja6]: https://leanpub.com/javascriptallongesix
 
