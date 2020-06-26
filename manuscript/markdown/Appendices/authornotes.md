@@ -18,11 +18,13 @@ And now, a few questions and answers...
 
 ### `allong.es` sounds familiar...
 
-The recipes in JavaScript Allonge inspired a companion library called [allong.es](http://allong.es). It's free to use, of course. Please try it out. It complements the libraries you may already be using like Underscore.
+The recipes in JavaScript Allonge inspired a companion library called [allong.es]. It's free to use, of course. Please try it out. It complements the libraries you may already be using like Underscore.
+
+[allong.es]: https://github.com/raganwald/allong.es "Free recipes from JavaScript Allongé"
 
 ### I noticed that the recipes changed in early 2013. Why?
 
-Based on feedback from people exposed to other programming languages, I've renamed some of the recipe functions. While doing so, I also rewrote the partial application and some other parts of [allong.es](http://allong.es) to exploit symmetry.
+Based on feedback from people exposed to other programming languages, I've renamed some of the recipe functions. While doing so, I also rewrote the partial application and some other parts of [allong.es] to exploit symmetry.
 
 The new nomenclature has a few conventions. First, unless suffixed with `Now`, all functions are already curried. So you can write either `map(list, function)` or `map(list)(function)`. There isn't one, but if there was a `map` that wasn't curried, it would be called `mapNow`.
 

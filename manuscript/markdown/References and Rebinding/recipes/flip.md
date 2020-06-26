@@ -10,7 +10,9 @@ When we wrote [mapWith](#mapWith), we wrote it like this:
       };
     };
 
-Let's consider the case whether we have a `map` function of our own, perhaps from the [allong.es](http://allong.es) library, perhaps from [Underscore](http://underscorejs.org). We could write our function something like this:
+Let's consider the case whether we have a `map` function of our own, perhaps from the [allong.es] library, perhaps from [Underscore](http://underscorejs.org). We could write our function something like this:
+
+[allong.es]: https://github.com/raganwald/allong.es "Free recipes from JavaScript Allongé"
 
     function mapWith (fn) {
       return function (list) {
