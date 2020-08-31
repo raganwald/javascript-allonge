@@ -57,7 +57,7 @@ Here's an abstract "model" that supports undo and redo composed from a pair of s
               return obj
             },
             get: function (key) {
-              return attributes(key)
+              return attributes[key]
             },
             has: function (key) {
               return attributes.hasOwnProperty(key)
