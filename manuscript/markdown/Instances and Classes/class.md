@@ -53,7 +53,7 @@ For these reasons, many programmers choose to write their own library of functio
 
 [Backbone]: http://backbonejs.org
 
-Nevertheless, JavaScript right out of the box has everything you need for defining classes, methods, mixins, and even inheritance (as we'll see in [Extending Classes with Inheritance]). If we choose to adopt a library with more streamlined syntax, it's vital to understand JavaScript's semantics well enough to know what is happening "under the hood" so that we can work directly with objects, functions, methods, and prototypes when needed.
+Nevertheless, JavaScript right out of the box has everything you need for defining classes, methods, mixins, and even inheritance (as we'll see in [Extending Classes with Inheritance]). Even if we choose to adopt a library with more streamlined syntax, it's vital to understand JavaScript's semantics well enough to know what is happening "under the hood" so that we can work directly with objects, functions, methods, and prototypes when needed.
 
 [Extending Classes with Inheritance]: #classextension
 
