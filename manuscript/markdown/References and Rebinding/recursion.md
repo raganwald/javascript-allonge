@@ -133,7 +133,7 @@ Using named function expressions doesn't help us, because `even` and `odd` need 
 
 Now you can rebind one without breaking the other, because the names outside of the closure have no effect on the bindings inside the closure:
 
-    odd = 'unusual;
+    odd = 'unusual';
 
     even(0)
       //=> true
