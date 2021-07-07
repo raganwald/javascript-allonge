@@ -136,9 +136,9 @@ For example:
       
     'FORTRAN, SNOBOL, LISP, BASIC'.split(', ')
       //=> [ 'FORTRAN',
-      #     'SNOBOL',
-      #     'LISP',
-      #     'BASIC' ]
+      //     'SNOBOL',
+      //     'LISP',
+      //     'BASIC' ]
       
     [ 'FORTRAN',
       'SNOBOL',
@@ -146,11 +146,11 @@ For example:
       'BASIC' ].length
     //=> 4
     
-Functions themselves are instances, and they have methods. For example, every function has a method `call`. `call`'s first argument is a *context*: When you invoke `.call` on a function, it invoked the function, setting `this` to the context. It passes the remainder of the arguments to the function. It seems like objects are everywhere in JavaScript!
+Functions themselves are instances, and they have methods. For example, every function has a method `call`. `call`'s first argument is a *context*: When you invoke `.call` on a function, it invokes the function, setting `this` to the context. It passes the remainder of the arguments to the function. It seems like objects are everywhere in JavaScript!
 
 ### impostors
 
-You may have noticed that we use "weasel words" to describe how everything in JavaScript *behaves like* an instance. Everything *behaves as if* it was created by a function with a prototype.
+You may have noticed that we use "weasel words" to describe how everything in JavaScript *behaves like* an instance. Everything *behaves as if* it were created by a function with a prototype.
 
 The full explanation is this: As you know, JavaScript has "value types" like `String`, `Number`, and `Boolean`. As noted in the first chapter, value types are also called *primitives*, and one consequence of the way JavaScript implements primitives is that they aren't objects. Which means they can be identical to other values of the same type with the same contents, but the consequence of certain design decisions is that value types don't actually have methods or constructors. They aren't instances of some constructor.
 
