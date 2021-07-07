@@ -22,7 +22,7 @@ How would this help us in a practical way? Consider building an event-driven app
       someView.render()
     });
     
-This tells `someModel` that when it invoked a `change` event, it should call the anonymous function that in turn invoked `someView`'s `.render` method. Wouldn't it be simpler to simply write:
+This tells `someModel` that when it invokes a `change` event, it should call the anonymous function that in turn invokes `someView`'s `.render` method. Wouldn't it be simpler to write:
 
     someModel.on('change', someView.render);
     
@@ -76,7 +76,7 @@ This is a very popular pattern, so much so that many frameworks provide helper f
 
 There are two considerations to ponder. First, we may be converting an instance method into an object method. Specifically, we're creating an object method that is bound to the object.
 
-Most of the time, the only change this makes is that it uses slightly more memory (we're creating an extra function for each bound method in each object). But if you are a little more dynamic and actually change methods in the prototype, your changes won't "override" the object methods that you created. You'd have to roll your own binding method that refers to the prototype's method dynamically or reorganize your code.
+Most of the time, the only difference this makes is that it uses slightly more memory (we're creating an extra function for each bound method in each object). But if you are a little more dynamic and actually change methods in the prototype, your changes won't "override" the object methods that you created. You'd have to roll your own binding method that refers to the prototype's method dynamically or reorganize your code.
 
 This is one of the realities of "meta-programming." Each technique looks useful and interesting in isolation, but when multiple techniques are used together, they can have unpredictable results. It's not surprising, because most popular languages consider classes and methods to be fairly global, and they handle dynamic changes through side-effects. This is roughly equivalent to programming in 1970s-era BASIC by imperatively changing global variables.
 
