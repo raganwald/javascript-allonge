@@ -125,7 +125,7 @@ Any time we must do the same repetitive thing over and over and over again, we i
     banksQueue.pushTail('Hello');
     banksQueue.pushTail('JavaScript') 
 
-Every time you invoke a function that is a member of an object, JavaScript binds that object to the name `this` in the environment of the function just as if it was an argument.[^this] Now we can easily make copies:
+Every time you invoke a function that is a member of an object, JavaScript binds that object to the name `this` in the environment of the function just as if it were an argument.[^this] Now we can easily make copies:
 
     copyOfQueue = extend({}, banksQueue)
     copyOfQueue.array = []
