@@ -70,8 +70,8 @@ You can do the same thing with both syntaxes for accessing objects:
     name.middleName = 'Austin'
     name
       //=> { firstName: 'Leonard',
-      #     lastName: 'Braithwaite',
-      #     middleName: 'Austin' }
+      //     lastName: 'Braithwaite',
+      //     middleName: 'Austin' }
 
 We have established that JavaScript's semantics allow for two different bindings to refer to the same value. For example:
 
