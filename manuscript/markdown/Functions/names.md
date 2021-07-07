@@ -25,7 +25,7 @@ In this book we are not examining JavaScript's tooling such as debuggers baked i
       //...
     });
 
-Now, the function's actual name has no effect on the environment in which it is used. To whit:
+Now, the function's actual name has no effect on the environment in which it is used. To wit:
 
     var bindingName = function actualName () {
       //...
