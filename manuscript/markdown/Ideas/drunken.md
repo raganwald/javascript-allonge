@@ -5,7 +5,7 @@ In [Tortoises, Hares, and Teleporting Turtles](#tortoises), we looked at the "To
 1. The mechanism for iterating over a list.
 2. The algorithm for detecting a loop in a list.
 
-{:lang="javascript"}
+{:lang="js"}
 ~~~~~~~~
 var LinkedList = (function() {
 
@@ -48,7 +48,7 @@ We then went on to discuss how to use [functional iterators](#functional-iterato
 
 For example, here is a function that takes an array and returns a functional iterator over the array:
 
-{:lang="javascript"}
+{:lang="js"}
 ~~~~~~~~
 function ArrayIterator (array) {
   var index = 0;
@@ -64,7 +64,7 @@ Iterators allow us to write (or refactor) functions to operate on iterators inst
 
 Now we'll refactor the Tortoise and Hare to use iterators instead of directly operate on linked lists. We'll add an `.iterator()` method to linked lists, and we'll rewrite our loop detector function to take an "iterable" instead of a list:
 
-{:lang="javascript"}
+{:lang="js"}
 ~~~~~~~~
 LinkedList.prototype.iterator = function() {
   var list = this;
@@ -77,8 +77,8 @@ LinkedList.prototype.iterator = function() {
 
 function tortoiseAndHareLoopDetector (iterable) {
   var tortoise = iterable.iterator(),
-      hare = iterable.iterator(), 
-      tortoiseValue, 
+      hare = iterable.iterator(),
+      tortoiseValue,
       hareValue;
   while (((tortoiseValue = tortoise()) != null) && ((hare(), hareValue = hare()) != null)) {
     if (tortoiseValue === hareValue) {
@@ -121,7 +121,7 @@ Therefore, if we think of this as detecting whether the chequer revisits a squar
 
 In essence, we're given an object that has a `.iterator()` method. That gives us an iterator, and each time we call the iterator, we get a direction. Here it is:
 
-{:lang="javascript"}
+{:lang="js"}
 ~~~~~~~~
 var DIRECTION_TO_DELTA = {
   N: [1, 0],
@@ -134,7 +134,7 @@ var Game = (function () {
   function Game (size) {
     var i,
         j;
-    
+
     this.size = size
                 ? Math.floor(Math.random() * 8) + 8
                 : size ;
@@ -146,16 +146,16 @@ var Game = (function () {
       }
     }
     this.initialPosition = [
-      2 + Math.floor(Math.random() * (this.size - 4)), 
+      2 + Math.floor(Math.random() * (this.size - 4)),
       2 + Math.floor(Math.random() * (this.size - 4))
     ];
     return this;
   };
-  
+
   Game.prototype.contains = function (position) {
     return position[0] >= 0 && position[0] < this.size && position[1] >= 0 && position[1] < this.size;
   };
-  
+
   Game.prototype.iterator = function () {
     var position = [this.initialPosition[0], this.initialPosition[1]];
     return function () {
@@ -171,9 +171,9 @@ var Game = (function () {
       }
     }.bind(this);
   };
-  
+
   return Game;
-  
+
 })();
 
 var i = new Game().iterator();
@@ -198,7 +198,7 @@ Our goal is to transform the iteration of directions into an iteration that the 
 
 We'll use a `statefulMap`:
 
-{:lang="javascript"}
+{:lang="js"}
 ~~~~~~~~
 function statefulMap (iter, binaryFn, initial) {
   var state = initial;
@@ -222,7 +222,7 @@ function statefulMap (iter, binaryFn, initial) {
 Here's how we use `statefulMap`:
 
 
-{:lang="javascript"}
+{:lang="js"}
 ~~~~~~~~
 function RelativeIterator (directionIterator) {
   return statefulMap(directionIterator, function (relativePositionStr, directionStr) {
@@ -255,7 +255,7 @@ i();
 
 We're almost there! The refactored `tortoiseAndHareLoopDetector` expects an "iterable," an object that implements the  `.iterator()` method. Let's refactor `RelativeIterable` to accept a game and return an iterable instead of accepting an iteration and returning an iteration:
 
-{:lang="javascript"}
+{:lang="js"}
 ~~~~~~~~
 function RelativeIterable (game) {
   return {
@@ -290,7 +290,7 @@ So. We can take a `Game` instance and produce an iterable that iterates over reg
 
 Our refactored `tortoiseAndHareLoopDetector` takes an iterable and detects this for us. Writing a detector function is trivial:
 
-{:lang="javascript"}
+{:lang="js"}
 ~~~~~~~~
 function terminates (game) {
   return !tortoiseAndHareLoopDetector(RelativeIterable(game));
@@ -316,7 +316,7 @@ Can we also refactor the "Teleporting Turtle" algorithm to take an iterable? If 
 
 We start with:
 
-{:lang="javascript"}
+{:lang="js"}
 ~~~~~~~~
 function teleportingTurtleLoopDetector (list) {
   var i, rabbit, speed, turtle;
@@ -351,7 +351,7 @@ teleportingTurtleLoopDetector(list);
 
 And refactor it to become:
 
-{:lang="javascript"}
+{:lang="js"}
 ~~~~~~~~
 function teleportingTurtleLoopDetector (iterable) {
   var i, rabbit, rabbitValue, speed, turtleValue;
@@ -387,7 +387,7 @@ teleportingTurtleLoopDetector(list);
 
 Now we can plug it into our termination detector:
 
-{:lang="javascript"}
+{:lang="js"}
 ~~~~~~~~
 function terminates (game) {
   return !teleportingTurtleLoopDetector(RelativeIterable(game));
